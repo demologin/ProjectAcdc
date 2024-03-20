@@ -1,18 +1,20 @@
 package com.javarush.kotovych.quest;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Quest {
     public String name;
-    public long id;
-    public void load(){
+    public String description;
 
+    @Getter
+    @Setter
+    private long id;
+
+    public Quest(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 }

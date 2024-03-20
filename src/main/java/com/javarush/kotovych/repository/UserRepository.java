@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
+@org.springframework.stereotype.Repository
 public class UserRepository implements Repository<User>{
 
     private final Map<Long, User> map = new HashMap<>();

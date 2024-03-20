@@ -2,11 +2,16 @@ package com.javarush.kotovych.service;
 
 import com.javarush.kotovych.entity.User;
 import com.javarush.kotovych.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Optional;
+
+@Service
 public class UserService {
 
+    @Autowired
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {

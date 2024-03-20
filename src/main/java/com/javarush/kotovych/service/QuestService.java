@@ -2,17 +2,22 @@ package com.javarush.kotovych.service;
 
 import com.javarush.kotovych.quest.Quest;
 import com.javarush.kotovych.repository.QuestRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Optional;
 
-public class QuestService implements Service {
+@Service
+public class QuestService {
 
+    @Autowired
     private final QuestRepository questRepository;
 
     public QuestService(QuestRepository questRepository) {
         this.questRepository = questRepository;
     }
+
     public void create(Quest quest) {
         questRepository.create(quest);
     }

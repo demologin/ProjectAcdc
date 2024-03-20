@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
+@org.springframework.stereotype.Repository
 public class QuestRepository implements Repository<Quest> {
     private final Map<Long, Quest> map = new HashMap<>();
 
@@ -27,7 +28,6 @@ public class QuestRepository implements Repository<Quest> {
     public void create(Quest entity) {
         entity.setId(id.incrementAndGet());
         update(entity);
-
     }
 
     @Override
