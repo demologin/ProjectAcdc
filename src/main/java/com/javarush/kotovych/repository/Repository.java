@@ -10,9 +10,12 @@ public interface Repository<T> {
 
     Optional<T> get(long id);
 
+    Optional<T> get(String name);
+
     void create(T entity);
 
     void update(T entity);
 
     void delete(T entity);
+
 }

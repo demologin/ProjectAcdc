@@ -5,7 +5,9 @@ import com.javarush.kotovych.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,5 +38,9 @@ public class UserService {
 
     public Optional<User> get(long id) {
         return userRepository.get(id);
+    }
+
+    public Optional<User> get(String login) {
+        return userRepository.get(login);
     }
 }

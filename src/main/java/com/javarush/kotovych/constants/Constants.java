@@ -1,7 +1,14 @@
 package com.javarush.kotovych.constants;
 
 public class Constants {
+    public static final String LOGGED_IN = "not logged in";
+    public static final String QUESTS = "quests";
+
     private Constants(){}
 
-    public static final int DEFAULT_COOKIE_LIVING_TIME = 10;
+    public static final int DEFAULT_COOKIE_LIVING_TIME = 60;
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
+    public static final String ROLE = "role";
+    public static final String ID = "id";
 }

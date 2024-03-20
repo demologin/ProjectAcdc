@@ -22,4 +22,9 @@ public class User {
         this.password = password;
         this.role = role;
     }
+
+    @Override
+    public String toString(){
+        return login;
+    }
 }

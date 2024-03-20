@@ -13,6 +13,7 @@ public class QuestRepository implements Repository<Quest> {
     private final Map<Long, Quest> map = new HashMap<>();
 
     public static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
+    private final Map<String, Quest> questMap = new HashMap<>();
 
     @Override
     public Collection<Quest> getAll() {
@@ -24,6 +25,10 @@ public class QuestRepository implements Repository<Quest> {
         return Optional.ofNullable(map.get(id));
     }
 
+    public Optional<Quest> get(String name) {
+        return Optional.ofNullable(questMap.get(name));
+    }
+
     @Override
     public void create(Quest entity) {
         entity.setId(id.incrementAndGet());
@@ -33,6 +38,7 @@ public class QuestRepository implements Repository<Quest> {
     @Override
     public void update(Quest entity) {
         map.put(entity.getId(), entity);
+        questMap.put(entity.getName(), entity);
     }
 
     @Override

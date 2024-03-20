@@ -12,6 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class UserRepository implements Repository<User>{
 
     private final Map<Long, User> map = new HashMap<>();
+    private final Map<String, User> userMap = new HashMap<>();
 
     public static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
 
@@ -25,6 +26,10 @@ public class UserRepository implements Repository<User>{
         return Optional.ofNullable(map.get(id));
     }
 
+    public Optional<User> get(String login) {
+        return Optional.ofNullable(userMap.get(login));
+    }
+
     @Override
     public void create(User entity) {
         entity.setId(id.incrementAndGet());
@@ -34,10 +39,12 @@ public class UserRepository implements Repository<User>{
     @Override
     public void update(User entity) {
         map.put(entity.getId(), entity);
+        userMap.put(entity.getLogin(), entity);
     }
 
     @Override
     public void delete(User entity) {
         map.remove(entity.getId());
+        userMap.remove(entity.getLogin());
     }
 }

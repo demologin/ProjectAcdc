@@ -37,4 +37,8 @@ public class QuestService {
     public Optional<Quest> get(long id) {
         return questRepository.get(id);
     }
+
+    public Optional<Quest> get(String name) {
+        return questRepository.get(name);
+    }
 }

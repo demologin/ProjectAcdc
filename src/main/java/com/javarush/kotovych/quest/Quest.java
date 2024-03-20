@@ -5,12 +5,11 @@ import lombok.Setter;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Getter
+@Setter
 public class Quest {
-    public String name;
-    public String description;
-
-    @Getter
-    @Setter
+    private String name;
+    private String description;
     private long id;
 
     public Quest(String name, String description) {
