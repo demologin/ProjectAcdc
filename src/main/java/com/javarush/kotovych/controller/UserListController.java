@@ -2,7 +2,6 @@ package com.javarush.kotovych.controller;
 
 import com.javarush.kotovych.constants.Constants;
 import com.javarush.kotovych.entity.User;
-import com.javarush.kotovych.repository.QuestRepository;
 import com.javarush.kotovych.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -10,31 +9,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Optional;
-
 
 @RestController
-public class MainPageController {
-
-    @Autowired
-    private QuestRepository questService;
-
+public class UserListController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
-    public ModelAndView mainPage(@CookieValue(value = Constants.ID, defaultValue = "0") String id) {
-        ModelAndView modelAndView = new ModelAndView("home");
-        modelAndView.addObject(Constants.QUESTS, questService.getAll());
+    @GetMapping("/user-list")
+    public ModelAndView getUserListPage(@CookieValue(value = Constants.ID, defaultValue = "0") String id) {
+        ModelAndView modelAndView = new ModelAndView("user-list");
+        modelAndView.addObject("users", userService.getAll());
         if (userService.checkIfExists(Long.parseLong(id))) {
             User user = userService.get(Long.parseLong(id)).get();
             modelAndView.addObject(Constants.LOGGED_IN, true);
-            modelAndView.addObject(Constants.USERNAME, user.getLogin());
         } else {
             modelAndView.addObject(Constants.LOGGED_IN, false);
-            modelAndView.addObject(Constants.USERNAME, Constants.NOT_LOGGED_IN);
         }
-
         return modelAndView;
     }
 }

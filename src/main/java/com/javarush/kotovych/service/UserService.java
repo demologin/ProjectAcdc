@@ -43,4 +43,24 @@ public class UserService {
     public Optional<User> get(String login) {
         return userRepository.get(login);
     }
+
+    public boolean checkIfCorrect(String login, String password) {
+        Optional<User> userOptional = userRepository.get(login);
+        if(userOptional.isPresent()) {
+            User user = userOptional.get();
+            if(!user.getPassword().equals(password)) {
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkIfExists(long id) {
+        Optional<User> userOptional = userRepository.get(id);
+        if(userOptional.isPresent()) {
+            return true;
+        }
+        return false;
+    }
 }

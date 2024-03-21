@@ -25,10 +25,6 @@
             margin-right: 10px; /* расстояние между ссылками */
         }
 
-        .navbar-brand {
-            margin-right: auto; /* выравнивание логотипа влево */
-        }
-
         .user-profile {
             margin-left: auto; /* выравнивание профиля пользователя вправо */
             display: flex;
@@ -55,6 +51,15 @@
         .quest-block:hover {
             background-color: #f0f0f0; /* изменение цвета фона при наведении */
         }
+
+        .page-links {
+            text-align: center;
+            margin-bottom: 20px; /* отступ снизу */
+        }
+
+        .page-links a {
+            margin-right: 20px;
+        }
     </style>
 </head>
 
@@ -63,7 +68,7 @@
 <nav class="navbar">
     <div class="container">
         <div>
-            <a th:if="${!loggedIn}" href="#" th:href="@{/login}">Sign In</a>
+            <a href="#" th:href="@{/login}">Sign In</a>
             <a th:if="${!loggedIn}" href="#" th:href="@{/signup}">Sign Up</a>
         </div>
         <div th:if="${loggedIn}" class="user-profile">
@@ -72,17 +77,24 @@
     </div>
 </nav>
 
+<!-- Ссылки на страницы "Создать квест" и "Список пользователей" -->
+<div class="page-links">
+    <a href="#" th:href="@{/create-quest}">Создать квест</a>
+    <a href="#" th:href="@{/user-list}">Список пользователей</a>
+</div>
+
 <!-- Секция с квестами -->
 <div class="container">
     <div class="row">
         <div th:each="quest : ${quests}" class="col-lg-4 col-md-6">
-            <div class="quest-block" th:attr="data-id=${quest.id}" onclick="redirectToDetails(this)">
-                <h3 th:text="${quest.name}"></h3>
-                <p th:text="${quest.description}"></p>
+            <div class="quest-block" th:attr="data-id=${quest.getId()}" onclick="redirectToDetails(this)">
+                <h3 th:text="${quest.getName()}"></h3>
+                <p th:text="${quest.getDescription()}"></p>
             </div>
         </div>
     </div>
 </div>
+
 <script>
     function redirectToDetails(element) {
         var questId = element.getAttribute('data-id');

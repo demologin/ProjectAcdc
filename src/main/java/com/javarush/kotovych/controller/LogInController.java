@@ -31,25 +31,16 @@ public class LogInController {
     @PostMapping("/login")
     public ModelAndView logIn(@RequestParam(Constants.USERNAME) String username, @RequestParam("password") String password, HttpServletResponse response) {
         ModelAndView loginPage = new ModelAndView("redirect:/login");
-        User user;
-        try {
-            user = userService.get(username).orElseThrow(() -> {
-                log.debug("User {} not found", username);
-                throw new AppException("User %s not found".formatted(username));
-            });
-        } catch (Exception e){
+        if (!userService.checkIfCorrect(username, password)) {
+            log.debug("User {} not found", username);
             return loginPage;
         }
-
-        if (user.getPassword().equals(password)) {
-            long id = user.getId();
-            Cookie idCookie = new Cookie(Constants.ID, String.valueOf(id));
-            idCookie.setPath("/");
-            idCookie.setMaxAge(Constants.DEFAULT_COOKIE_LIVING_TIME);
-            response.addCookie(idCookie);
-            return new ModelAndView("redirect:/");
-        } else {
-            return loginPage;
-        }
+        User user = userService.get(username).get();
+        long id = user.getId();
+        Cookie idCookie = new Cookie(Constants.ID, String.valueOf(id));
+        idCookie.setPath("/");
+        idCookie.setMaxAge(Constants.DEFAULT_COOKIE_LIVING_TIME);
+        response.addCookie(idCookie);
+        return new ModelAndView("redirect:/");
     }
 }

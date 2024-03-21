@@ -1,8 +1,9 @@
 package com.javarush.kotovych.constants;
 
 public class Constants {
-    public static final String LOGGED_IN = "not logged in";
+    public static final String NOT_LOGGED_IN = "not logged in";
     public static final String QUESTS = "quests";
+    public static final String LOGGED_IN = "loggedIn";
 
     private Constants(){}
 

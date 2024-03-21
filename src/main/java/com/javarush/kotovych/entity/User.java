@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.concurrent.atomic.AtomicLong;
 
 @Data
 @NoArgsConstructor
@@ -16,6 +15,9 @@ public class User {
     private String login;
     private String password;
     private Role role;
+
+    private int wins;
+    private int losses;
 
     public User(String login, String password, Role role) {
         this.login = login;
