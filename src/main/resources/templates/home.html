@@ -31,13 +31,6 @@
             align-items: center;
         }
 
-        .user-profile img {
-            width: 30px; /* размер иконки пользователя */
-            height: auto;
-            border-radius: 50%; /* скругленные углы */
-            margin-right: 5px; /* отступ между иконкой и именем */
-        }
-
         .quest-block {
             border: 1px solid #ccc;
             margin-bottom: 20px; /* отступ между квестами */
@@ -64,7 +57,7 @@
 </head>
 
 <body>
-<!-- Верхняя панель навигации -->
+
 <nav class="navbar">
     <div class="container">
         <div>
@@ -77,17 +70,15 @@
     </div>
 </nav>
 
-<!-- Ссылки на страницы "Создать квест" и "Список пользователей" -->
-<div class="page-links">
-    <a href="#" th:href="@{/create-quest}">Создать квест</a>
+<div th:if="${loggedIn}" class="page-links">
+<!--    <a href="#" th:href="@{/create-quest}">Создать квест</a>-->
     <a href="#" th:href="@{/user-list}">Список пользователей</a>
 </div>
 
-<!-- Секция с квестами -->
-<div class="container">
+<div th:if="${loggedIn}" class="container">
     <div class="row">
         <div th:each="quest : ${quests}" class="col-lg-4 col-md-6">
-            <div class="quest-block" th:attr="data-id=${quest.getId()}" onclick="redirectToDetails(this)">
+            <div class="quest-block" th:attr="data-name=${quest.getName()}" onclick="redirectToDetails(this)">
                 <h3 th:text="${quest.getName()}"></h3>
                 <p th:text="${quest.getDescription()}"></p>
             </div>
@@ -95,10 +86,20 @@
     </div>
 </div>
 
+<div th:if="${!loggedIn}" class="container text-center" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <div class="row">
+        <div class="col">
+            <p>Для доступа к квестам необходимо зарегистрироваться.</p>
+            <a href="#" th:href="@{/signup}" class="btn btn-primary">Зарегистрироваться</a>
+        </div>
+    </div>
+</div>
+
+
 <script>
     function redirectToDetails(element) {
-        var questId = element.getAttribute('data-id');
-        window.location.href = 'quest_details?id=' + questId;
+        var questName = element.getAttribute('data-name');
+        window.location.href = 'quest?name=' + questName;
     }
 </script>
 </body>

@@ -2,11 +2,9 @@ package com.javarush.kotovych.controller;
 
 
 import com.javarush.kotovych.constants.Constants;
-import com.javarush.kotovych.entity.Role;
 import com.javarush.kotovych.entity.User;
-import com.javarush.kotovych.exception.AppException;
 import com.javarush.kotovych.service.UserService;
-import jakarta.servlet.http.Cookie;
+import com.javarush.kotovych.util.CookieSetter;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,17 +28,14 @@ public class SignUpController {
     }
 
     @PostMapping("/signup")
-    public ModelAndView signUp(@RequestParam(Constants.USERNAME) String username, @RequestParam("password") String password, @RequestParam("role") String role, HttpServletResponse response) {
+    public ModelAndView signUp(@RequestParam(Constants.USERNAME) String username, @RequestParam("password") String password,  HttpServletResponse response) {
         Optional<User> existingUser = userService.get(username);
         if(existingUser.isEmpty()){
-            User user = new User(username, password, Role.valueOf(role));
+            User user = new User(username, password);
             userService.create(user);
 
             long id = user.getId();
-            Cookie idCookie = new Cookie(Constants.ID, String.valueOf(id));
-            idCookie.setPath("/");
-            idCookie.setMaxAge(Constants.DEFAULT_COOKIE_LIVING_TIME);
-            response.addCookie(idCookie);
+            CookieSetter.addCookie(response, Constants.ID, String.valueOf(id));
 
 
             log.info("User with username {} created", username);

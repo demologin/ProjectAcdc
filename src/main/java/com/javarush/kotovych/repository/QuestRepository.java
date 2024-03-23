@@ -30,19 +30,19 @@ public class QuestRepository implements Repository<Quest> {
     }
 
     @Override
-    public void create(Quest entity) {
-        entity.setId(id.incrementAndGet());
-        update(entity);
+    public void create(Quest quest) {
+        quest.setId(id.incrementAndGet());
+        update(quest);
     }
 
     @Override
-    public void update(Quest entity) {
-        map.put(entity.getId(), entity);
-        questMap.put(entity.getName(), entity);
+    public void update(Quest quest) {
+        map.put(quest.getId(), quest);
+        questMap.put(quest.getName(), quest);
     }
 
     @Override
-    public void delete(Quest entity) {
-        map.remove(entity.getId());
+    public void delete(Quest quest) {
+        map.remove(quest.getId());
     }
 }

@@ -14,15 +14,13 @@ public class User {
     private long id;
     private String login;
     private String password;
-    private Role role;
 
     private int wins;
     private int losses;
 
-    public User(String login, String password, Role role) {
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
-        this.role = role;
     }
 
     @Override

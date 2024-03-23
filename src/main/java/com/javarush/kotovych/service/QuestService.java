@@ -41,4 +41,10 @@ public class QuestService {
     public Optional<Quest> get(String name) {
         return questRepository.get(name);
     }
+
+    public void createIfNotExists(Quest quest) {
+        if(get(quest.getName()).isEmpty()){
+            create(quest);
+        }
+    }
 }
