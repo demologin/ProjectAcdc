@@ -77,10 +77,10 @@
         var password = document.getElementById("password").value;
 
         var usernameRegex = /^[a-zA-Z0-9\s]{4,}$/;
-        var passwordRegex = /^(?=.*[a-zA-Z].*[a-zA-Z])(?=.*\d.*\d)[a-zA-Z\d!@#$%^&*()_+]{4,}$/;
+        var passwordRegex = /^(?=.*[a-zA-Z].*[a-zA-Z])(?=.*\d.*\d)[a-zA-Z\d-!#%^&*()_+]{4,}$/;
 
 
-        // Проверка на количество цифр и букв в никнейме
+
         var digitCount = (username.match(/\d/g) || []).length;
         var letterCount = (username.match(/[a-zA-Z]/g) || []).length;
 
@@ -92,7 +92,7 @@
         }
 
         if (!passwordRegex.test(password)) {
-            document.getElementById("password-error").innerText = "Password must contain at least 4 digits, 2 letters, and be longer than 4 characters with no special characters.";
+            document.getElementById("password-error").innerText = "Password must contain at least 4 digits and 2 letters";
             return false;
         } else {
             document.getElementById("password-error").innerText = "";
