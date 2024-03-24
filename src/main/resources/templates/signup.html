@@ -72,7 +72,7 @@
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
         var usernameRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{4,}$/; // Изменено регулярное выражение
-        var passwordRegex = /^(?=.*[a-zA-Z].*[a-zA-Z])(?=.*\d.*\d.*\d.*\d)[a-zA-Z\d]{4,12}$/;
+        var passwordRegex = /^(?=.*[a-zA-Z].*[a-zA-Z])(?=.*\d.*\d.*\d.*\d)[a-zA-Z\d]{4,}$/;
 
         // Проверка на количество цифр и букв в никнейме
         var digitCount = (username.match(/\d/g) || []).length;
@@ -86,7 +86,7 @@
         }
 
         if (!passwordRegex.test(password)) {
-            document.getElementById("password-error").innerText = "Password must contain at least 4 digits, 2 letters, and be between 4 and 12 characters with no special characters.";
+            document.getElementById("password-error").innerText = "Password must contain at least 4 digits, 2 letters, and be longer than 4 characters with no special characters.";
             return false;
         } else {
             document.getElementById("password-error").innerText = "";
