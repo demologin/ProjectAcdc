@@ -1,12 +1,27 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="head.jsp" %>
-<body>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@include file="parts/header.jsp" %>
 <div class="container">
-    <form class="form-horizontal" method="post">
+    <form class="form-horizontal" method="post"
+          action="edit-user?id=${requestScope.user.id==null?0:requestScope.user.id}"
+          enctype="multipart/form-data"
+    >
         <fieldset>
 
             <!-- Form Name -->
             <legend>Edit user:</legend>
+
+            <!-- File Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="image">
+                    <img id="previewId"
+                         src="images/${requestScope.user.image}"
+                         width="150"
+                         alt="${requestScope.user.image}">
+                    <input id="image"
+                           name="image"
+                           class="input-file" type="file"/>
+                </label>
+            </div>
 
             <!-- Text input-->
             <div class="form-group">
@@ -35,7 +50,7 @@
                            placeholder="your password"
                            class="form-control input-md"
                            required="">
-                    <span class="help-block">min 8 symb</span>
+                    <span class="help-block">min 8 symbols</span>
                 </div>
             </div>
 
@@ -62,12 +77,12 @@
                     <c:if test="${requestScope.user!=null}">
                         <button id="update" name="update" class="btn btn-primary">Update</button>
                     </c:if>
-
                 </div>
             </div>
 
         </fieldset>
     </form>
 </div>
-</body>
+<%@include file="parts/footer.jsp" %>
+
 
