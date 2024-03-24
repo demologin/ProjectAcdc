@@ -32,7 +32,7 @@
       "firstAnswer": "Запустить опять",
       "secondAnswer": "Удалить новую функцию",
       "firstNextQuestion": "start-code-again",
-      "secondNextQuestion": "delete-new-function"
+      "secondNextQuestion": "delete-new-function-game-over"
     },
     "make-old-function-better": {
       "situation": "Вы доработали старую функцию",

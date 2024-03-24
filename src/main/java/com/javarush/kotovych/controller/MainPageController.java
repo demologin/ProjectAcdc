@@ -26,8 +26,8 @@ public class MainPageController {
     @GetMapping("/")
     public ModelAndView mainPage(@CookieValue(value = Constants.ID, defaultValue = Constants.DEFAULT_ID) String id,
                                  HttpServletRequest request) {
-        Quest quest = QuestParser.parseFromJsonFile(MainPageController.class.getResource("/javaQuest.json"));
-        questService.createIfNotExists(quest);
+
+        addDefaultQuests();
 
         request.getSession().invalidate();
         SessionAttributeSetter.addSessionAttribute(request, Constants.CURRENT_PART, Constants.START);
@@ -44,5 +44,10 @@ public class MainPageController {
         }
 
         return modelAndView;
+    }
+
+    private void addDefaultQuests(){
+        Quest quest = QuestParser.parseFromJsonFile(MainPageController.class.getResource("/javaQuest.json"));
+        questService.createIfNotExists(quest);
     }
 }

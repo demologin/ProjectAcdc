@@ -11,43 +11,43 @@
 
     <style>
         body {
-            background-color: #f8f9fa; /* цвет фона страницы */
-            padding-top: 20px; /* отступ сверху */
+            background-color: #f8f9fa;
+            padding-top: 20px;
         }
 
         .navbar {
-            background-color: #e9ecef; /* цвет верхней панели навигации */
-            margin-bottom: 20px; /* отступ снизу */
+            background-color: #e9ecef;
+            margin-bottom: 20px;
         }
 
         .navbar a {
-            color: #6c757d !important; /* цвет ссылок в верхней панели навигации */
-            margin-right: 10px; /* расстояние между ссылками */
+            color: #6c757d !important;
+            margin-right: 10px;
         }
 
         .user-profile {
-            margin-left: auto; /* выравнивание профиля пользователя вправо */
+            margin-left: auto;
             display: flex;
             align-items: center;
         }
 
         .quest-block {
             border: 1px solid #ccc;
-            margin-bottom: 20px; /* отступ между квестами */
+            margin-bottom: 20px;
             padding: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            background-color: #fff; /* цвет фона квестов */
-            cursor: pointer; /* изменение курсора при наведении на квесты */
+            background-color: #fff;
+            cursor: pointer;
         }
 
         .quest-block:hover {
-            background-color: #f0f0f0; /* изменение цвета фона при наведении */
+            background-color: #f0f0f0;
         }
 
         .page-links {
             text-align: center;
-            margin-bottom: 20px; /* отступ снизу */
+            margin-bottom: 20px;
         }
 
         .page-links a {
@@ -89,8 +89,9 @@
 <div th:if="${!loggedIn}" class="container text-center" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
     <div class="row">
         <div class="col">
-            <p>Для доступа к квестам необходимо зарегистрироваться.</p>
+            <p>Для доступа к квестам необходимо зарегистрироваться или войти.</p>
             <a href="#" th:href="@{/signup}" class="btn btn-primary">Зарегистрироваться</a>
+            <a href="#" th:href="@{/login}" class="btn btn-primary">Войти</a>
         </div>
     </div>
 </div>
