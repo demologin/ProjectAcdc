@@ -13,8 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletResponse;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -48,16 +47,22 @@ class SignUpControllerTest {
 
         verify(userService, times(1)).create(user);
         verify(response, times(1)).addCookie(any());
+
         assertEquals(Constants.MAIN_PAGE_REDIRECT, result.getViewName());
     }
 
     @Test
-    void testSignUp_UserAlreadyExists_ThrowsAppException() {
+    void testSignUp_UserAlreadyExists() {
         String username = "existingUser";
         String password = "testPassword";
 
         when(userService.checkIfExists(username)).thenReturn(true);
+        ModelAndView modelAndView = signUpController.signUp(username, password, response);
 
-        assertThrows(AppException.class, () -> signUpController.signUp(username, password, response));
+        boolean containsKey = modelAndView.getModel().containsKey(Constants.ERROR);
+        String key = modelAndView.getModel().get(Constants.ERROR).toString();
+
+        assertTrue(containsKey);
+        assertEquals(key, Constants.FAILED_TO_CREATE_USER_BECAUSE_IT_ALREADY_EXISTS);
     }
 }

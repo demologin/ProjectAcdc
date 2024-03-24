@@ -31,9 +31,9 @@ public class LogInController {
                               HttpServletResponse response) {
         ModelAndView loginPage = new ModelAndView(Constants.LOGIN);
         if (!userService.checkIfCorrect(username, password)) {
-            log.debug(Constants.USER_NOT_FOUND_LOGGER, username);
+            log.debug(Constants.USER_NOT_FOUND_LOG, username);
             loginPage.addObject(Constants.ERROR, Constants.USER_NOT_FOUND);
-            log.info(Constants.USER_NOT_FOUND_LOGGER, username);
+            log.info(Constants.USER_NOT_FOUND_LOG, username);
             return loginPage;
         }
         User user = userService.get(username).get();

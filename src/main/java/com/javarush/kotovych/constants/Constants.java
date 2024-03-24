@@ -28,7 +28,7 @@ public class Constants {
     public static final String DEFAULT_ID = "0";
     public static final String JSON = "json";
     public static final String LOGIN = "login";
-    public static final String USER_NOT_FOUND_LOGGER = "User {} not found";
+    public static final String USER_NOT_FOUND_LOG = "User {} not found";
     public static final String ERROR = "error";
     public static final String USER_NOT_FOUND = "User not found";
     public static final String COULD_NOT_PARSE_QUEST_JSON = "Could not parse quest json";
