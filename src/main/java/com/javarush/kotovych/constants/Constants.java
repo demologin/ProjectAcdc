@@ -45,6 +45,7 @@ public class Constants {
     public static final String PASSWORD = "password";
     public static final String ID = "id";
     public static final String WIN = "win";
-    public static final List<String> DEFAULT_QUESTS = List.of("/javaQuest.json");
     public static final String REDIRECT_QUEST_NAME = "redirect:/quest?name=";
+
+    public static final List<String> DEFAULT_QUESTS = List.of("/javaQuest.json", "/aliensQuest.json");
 }

@@ -40,7 +40,7 @@
             <div class="text-center">
                 <form action="/quest" method="post">
                     <input type="hidden" name="name" th:value="${quest.getName()}"/>
-                    <button th:if="${!question.getFirstAnswer().isBlank()}" type="submit" name="currentPart" th:value="${question.getFirstNextQuestion()}" th:text="${question.getFirstAnswer()}" class="btn btn-primary mr-1">text</button>
+                    <button th:if="${!question.getFirstAnswer().isBlank()}" type="submit" name="currentPart" th:value="${question.getFirstNextQuestion()}" th:text="${question.getFirstAnswer()}" class="btn btn-primary mr-2">text</button>
                     <button th:if="${!question.getSecondAnswer().isBlank()}" type="submit" name="currentPart" th:value="${question.getSecondNextQuestion()}" th:text="${question.getSecondAnswer()}" class="btn btn-primary">text</button>
                 </form>
             </div>

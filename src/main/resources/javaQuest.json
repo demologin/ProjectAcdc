@@ -44,7 +44,7 @@
     },
     "start-code-again": {
       "situation": "Код запустился",
-      "text": "JVM стало вас жалко и она запустилка код без ошибок",
+      "text": "JVM стало вас жалко и она запустила код без ошибок",
       "firstAnswer": "Сделать pull request",
       "secondAnswer": "Закрыть проект",
       "firstNextQuestion": "pull-request-plus-new-functions-win",

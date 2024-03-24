@@ -62,6 +62,15 @@
         </div>
 
         <div class="form-group">
+            <label class="col-md-4 control-label" for="confirmPassword">Confirm Password</label>
+            <div class="col-md-4">
+                <input id="confirmPassword" name="confirmPassword" type="password" placeholder="confirm password"
+                       class="form-control input-md" required="">
+                <p class="error-message" id="confirmPassword-error"></p>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label class="col-md-4 control-label" for="submitButton"></label>
             <div class="col-md-4">
                 <button id="submitButton" name="submitButton" class="btn btn-primary">Submit</button>
@@ -75,11 +84,10 @@
     function validateForm() {
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
 
         var usernameRegex = /^[a-zA-Z0-9\s]{4,}$/;
         var passwordRegex = /^(?=.*[a-zA-Z].*[a-zA-Z])(?=.*\d.*\d)[a-zA-Z\d-!#%^&*()_+]{4,}$/;
-
-
 
         var digitCount = (username.match(/\d/g) || []).length;
         var letterCount = (username.match(/[a-zA-Z]/g) || []).length;
@@ -98,10 +106,15 @@
             document.getElementById("password-error").innerText = "";
         }
 
+        if (password !== confirmPassword) {
+            document.getElementById("confirmPassword-error").innerText = "Passwords do not match";
+            return false;
+        } else {
+            document.getElementById("confirmPassword-error").innerText = "";
+        }
+
         return true;
     }
-
-
 </script>
 
 </body>
