@@ -73,8 +73,10 @@
     function validateForm() {
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
-        var usernameRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{4,}$/;
-        var passwordRegex = /^(?=.*[a-zA-Z].*[a-zA-Z])(?=.*\d.*\d.*\d.*\d)[a-zA-Z\d]{4,}$/;
+
+        var usernameRegex = /^[a-zA-Z0-9\s]{4,}$/;
+        var passwordRegex = /^(?=.*[a-zA-Z].*[a-zA-Z])(?=.*\d.*\d)[a-zA-Z\d!#%^&*()_+-]{4,}$/;
+
 
 
         var digitCount = (username.match(/\d/g) || []).length;
