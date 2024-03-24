@@ -1,8 +1,8 @@
 package com.javarush.kotovych.controller;
 
-
 import com.javarush.kotovych.constants.Constants;
 import com.javarush.kotovych.entity.User;
+import com.javarush.kotovych.exception.AppException;
 import com.javarush.kotovych.service.UserService;
 import com.javarush.kotovych.util.CookieSetter;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,34 +14,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Optional;
-
 @Slf4j
 @RestController
 public class SignUpController {
+
     @Autowired
     private UserService userService;
 
     @GetMapping("/signup")
     public ModelAndView getSignupPage() {
-        return new ModelAndView("signup");
+        return new ModelAndView(Constants.SIGNUP);
     }
 
     @PostMapping("/signup")
-    public ModelAndView signUp(@RequestParam(Constants.USERNAME) String username, @RequestParam("password") String password,  HttpServletResponse response) {
-        Optional<User> existingUser = userService.get(username);
-        if(existingUser.isEmpty()){
+    public ModelAndView signUp(@RequestParam(Constants.USERNAME) String username,
+                               @RequestParam(Constants.PASSWORD) String password,
+                               HttpServletResponse response) {
+
+        if (!userService.checkIfExists(username)) {
             User user = new User(username, password);
             userService.create(user);
 
             long id = user.getId();
             CookieSetter.addCookie(response, Constants.ID, String.valueOf(id));
 
-
-            log.info("User with username {} created", username);
-            return new ModelAndView("redirect:/");
+            log.info(Constants.USER_WITH_USERNAME_CREATED, username);
+            return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
         } else {
-            return new ModelAndView("signup");
+            log.info(Constants.FAILED_TO_CREATE_USER_BECAUSE_IT_ALREADY_EXISTS);
+            throw new AppException(Constants.SOMETHING_WENT_WRONG);
         }
     }
 }

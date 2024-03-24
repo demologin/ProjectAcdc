@@ -43,7 +43,7 @@
             </div>
             <div class="mt-3">
                 <!-- Строка для копирования маленького текста -->
-                <p id="copy-text" class="bg-light p-2" style="cursor: pointer">Копировать JSON</p>
+                <p id="copy-text" class="bg-light p-2" style="cursor: pointer">Копировать пример</p>
             </div>
         </div>
     </div>
@@ -51,7 +51,100 @@
 <script>
     // Функция для копирования текста при клике
     document.getElementById('copy-text').addEventListener('click', function() {
-        var textToCopy = document.getElementById('json-input').value;
+        var textToCopy = "{\n" +
+            "  \"name\": \"JavaAdventure\",\n" +
+            "  \"description\": \"Удивительный мир магии\",\n" +
+            "  \"questions\": {\n" +
+            "    \"start\": {\n" +
+            "      \"situation\": \"Вы пишите проект и столкнулись с ошибкой\",\n" +
+            "      \"text\": \"Что будете делать?\",\n" +
+            "      \"firstAnswer\": \"Спросить ChatGPT\",\n" +
+            "      \"secondAnswer\": \"Попробовать решить\",\n" +
+            "      \"firstNextQuestion\": \"ask-chat-gpt-game-over\",\n" +
+            "      \"secondNextQuestion\": \"try-fixing\"\n" +
+            "    },\n" +
+            "    \"ask-chat-gpt-game-over\": {\n" +
+            "      \"situation\": \"Ваш проект сломался\",\n" +
+            "      \"text\": \"Вы сделали так как сказал ChatGPT но забыли сделать коммит\",\n" +
+            "      \"firstAnswer\": \"\",\n" +
+            "      \"secondAnswer\": \"\",\n" +
+            "      \"firstNextQuestion\": \"\",\n" +
+            "      \"secondNextQuestion\": \"\"\n" +
+            "    },\n" +
+            "    \"try-fixing\": {\n" +
+            "      \"situation\": \"У вас получилось починить ошибку\",\n" +
+            "      \"text\": \"Что будете делать дальше?\",\n" +
+            "      \"firstAnswer\": \"Добавить новую функцию\",\n" +
+            "      \"secondAnswer\": \"Доработать старую\",\n" +
+            "      \"firstNextQuestion\": \"add-new-function\",\n" +
+            "      \"secondNextQuestion\": \"make-old-function-better\"\n" +
+            "    },\n" +
+            "    \"add-new-function\": {\n" +
+            "      \"situation\": \"Вы добавили новую функцию\",\n" +
+            "      \"text\": \"У вас километровый stack trace\",\n" +
+            "      \"firstAnswer\": \"Запустить опять\",\n" +
+            "      \"secondAnswer\": \"Удалить новую функцию\",\n" +
+            "      \"firstNextQuestion\": \"start-code-again\",\n" +
+            "      \"secondNextQuestion\": \"delete-new-function\"\n" +
+            "    },\n" +
+            "    \"make-old-function-better\": {\n" +
+            "      \"situation\": \"Вы доработали старую функцию\",\n" +
+            "      \"text\": \"Ваш код стал быстрее\",\n" +
+            "      \"firstAnswer\": \"Сделать pull request\",\n" +
+            "      \"secondAnswer\": \"Добавить что-то новое\",\n" +
+            "      \"firstNextQuestion\": \"make-pr-game-over\",\n" +
+            "      \"secondNextQuestion\": \"add-something-new-game-over\"\n" +
+            "    },\n" +
+            "    \"start-code-again\": {\n" +
+            "      \"situation\": \"Код запустился\",\n" +
+            "      \"text\": \"JVM стало вас жалко и она запустилка код без ошибок\",\n" +
+            "      \"firstAnswer\": \"Сделать pull request\",\n" +
+            "      \"secondAnswer\": \"Закрыть проект\",\n" +
+            "      \"firstNextQuestion\": \"pull-request-plus-new-functions-win\",\n" +
+            "      \"secondNextQuestion\": \"jvm-is-mad-game-over\"\n" +
+            "    },\n" +
+            "    \"make-pr-game-over\": {\n" +
+            "      \"situation\": \"Вы не добавили ничего нового\",\n" +
+            "      \"text\": \"Поражение\",\n" +
+            "      \"firstAnswer\": \"\",\n" +
+            "      \"secondAnswer\": \"\",\n" +
+            "      \"firstNextQuestion\": \"\",\n" +
+            "      \"secondNextQuestion\": \"\"\n" +
+            "    },\n" +
+            "    \"add-something-new-game-over\" : {\n" +
+            "      \"situation\": \"Вы устали и запутались в коде\",\n" +
+            "      \"text\": \"Поражение\",\n" +
+            "      \"firstAnswer\": \"\",\n" +
+            "      \"secondAnswer\": \"\",\n" +
+            "      \"firstNextQuestion\": \"\",\n" +
+            "      \"secondNextQuestion\": \"\"\n" +
+            "    },\n" +
+            "    \"pull-request-plus-new-functions-win\": {\n" +
+            "      \"situation\": \"Вы добавили что-то новое и сделали pull request\",\n" +
+            "      \"text\": \"Победа\",\n" +
+            "      \"firstAnswer\": \"\",\n" +
+            "      \"secondAnswer\": \"\",\n" +
+            "      \"firstNextQuestion\": \"\",\n" +
+            "      \"secondNextQuestion\": \"\"\n" +
+            "    },\n" +
+            "    \"jvm-is-mad-game-over\": {\n" +
+            "      \"situation\": \"JVM не понравилась такая наглость\",\n" +
+            "      \"text\": \"Поражение\",\n" +
+            "      \"firstAnswer\": \"\",\n" +
+            "      \"secondAnswer\": \"\",\n" +
+            "      \"firstNextQuestion\": \"\",\n" +
+            "      \"secondNextQuestion\": \"\"\n" +
+            "    },\n" +
+            "    \"delete-new-function-game-over\": {\n" +
+            "      \"situation\": \"Вы не добавили ничего нового\",\n" +
+            "      \"text\": \"Поражение\",\n" +
+            "      \"firstAnswer\": \"\",\n" +
+            "      \"secondAnswer\": \"\",\n" +
+            "      \"firstNextQuestion\": \"\",\n" +
+            "      \"secondNextQuestion\": \"\"\n" +
+            "    }\n" +
+            "  }\n" +
+            "}"
         var textArea = document.createElement("textarea");
         textArea.value = textToCopy;
         document.body.appendChild(textArea);

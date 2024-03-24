@@ -17,7 +17,7 @@ public class QuestParser {
     public static Quest parseFromJson(String json) {
         try {
             return objectMapper.readValue(json, Quest.class);
-        } catch (Exception e){
+        } catch (Exception e) {
             log.debug("Could not parse quest json", e);
             throw new AppException(e);
         }
@@ -26,7 +26,7 @@ public class QuestParser {
     public static Quest parseFromJsonFile(URL url) {
         try {
             return objectMapper.readValue(url, Quest.class);
-        } catch (Exception e){
+        } catch (Exception e) {
             log.debug("Could not parse quest json", e);
             throw new AppException(e);
         }

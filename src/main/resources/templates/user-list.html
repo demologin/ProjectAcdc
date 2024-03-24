@@ -53,7 +53,7 @@
             <a href="#" th:href="@{/}" class="navbar-brand">Главная страница</a>
             <a href="#" th:href="@{/login}">Sign In</a>
         </div>
-        <div th:if="${loggedIn}" class="user-profile">
+        <div class="user-profile">
             <a href="#" th:href="@{/edit-user}" th:text="${username}"></a>
         </div>
     </div>

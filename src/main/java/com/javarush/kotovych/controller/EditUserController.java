@@ -17,9 +17,9 @@ public class EditUserController {
     @GetMapping("/edit-user")
     public ModelAndView getEditUserPage(@CookieValue(value = Constants.ID, defaultValue = "0") long id) {
         ModelAndView modelAndView = new ModelAndView(Constants.EDIT_USER);
-        if(id != 0) {
+        if (id != 0) {
             Optional<User> user = userService.get(id);
-            if(user.isPresent()) {
+            if (user.isPresent()) {
                 modelAndView.addObject(Constants.USER, user.get());
                 return modelAndView;
             }
@@ -27,19 +27,20 @@ public class EditUserController {
         return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
     }
 
-    @PostMapping(Constants.EDIT_USER)
+    @PostMapping("/edit-user")
     public ModelAndView editUser(@RequestParam(Constants.USERNAME) String editUsername,
                                  @RequestParam(Constants.PASSWORD) String editPassword,
-                                 @CookieValue(Constants.ID) String id) {
+                                 @CookieValue(value = Constants.ID, defaultValue = Constants.DEFAULT_ID) long id) {
 
-        ModelAndView editPage = new ModelAndView("redirect:/edit-user");
+        ModelAndView editPage = new ModelAndView("redirect:/" + Constants.EDIT_USER);
 
-        if(editUsername.isBlank() || editPassword.isBlank()) {
+
+        if (editUsername.isBlank() || editPassword.isBlank()) {
             return editPage;
         }
 
-        Optional<User> optionalUser = userService.get(Long.parseLong(id));
-        if(optionalUser.isPresent()) {
+        if (userService.checkIfExists(id)) {
+            Optional<User> optionalUser = userService.get(id);
             User user = optionalUser.get();
             user.setLogin(editUsername);
             user.setPassword(editPassword);

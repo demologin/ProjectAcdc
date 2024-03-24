@@ -5,15 +5,14 @@ import com.javarush.kotovych.entity.User;
 import com.javarush.kotovych.quest.Quest;
 import com.javarush.kotovych.service.QuestService;
 import com.javarush.kotovych.service.UserService;
-import com.javarush.kotovych.util.CookieSetter;
 import com.javarush.kotovych.util.QuestParser;
-import jakarta.servlet.http.HttpServletResponse;
+import com.javarush.kotovych.util.SessionAttributeSetter;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 
 @RestController
 public class MainPageController {
@@ -25,13 +24,14 @@ public class MainPageController {
     private UserService userService;
 
     @GetMapping("/")
-    public ModelAndView mainPage(@CookieValue(value = Constants.ID, defaultValue = "0") String id,
-                                 HttpServletResponse response) {
+    public ModelAndView mainPage(@CookieValue(value = Constants.ID, defaultValue = Constants.DEFAULT_ID) String id,
+                                 HttpServletRequest request) {
         Quest quest = QuestParser.parseFromJsonFile(MainPageController.class.getResource("/javaQuest.json"));
         questService.createIfNotExists(quest);
 
+        request.getSession().invalidate();
+        SessionAttributeSetter.addSessionAttribute(request, Constants.CURRENT_PART, Constants.START);
 
-        CookieSetter.addCookie(response, Constants.CURRENT_PART, Constants.START);
         ModelAndView modelAndView = new ModelAndView(Constants.HOME_PAGE);
         modelAndView.addObject(Constants.QUESTS, questService.getAll());
         if (userService.checkIfExists(Long.parseLong(id))) {
@@ -45,6 +45,4 @@ public class MainPageController {
 
         return modelAndView;
     }
-
-
 }

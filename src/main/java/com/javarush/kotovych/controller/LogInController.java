@@ -22,19 +22,22 @@ public class LogInController {
 
     @GetMapping("/login")
     public ModelAndView getLoginPage() {
-        return new ModelAndView("login");
+        return new ModelAndView(Constants.LOGIN);
     }
 
     @PostMapping("/login")
-    public ModelAndView logIn(@RequestParam(Constants.USERNAME) String username, @RequestParam("password") String password, HttpServletResponse response) {
-        ModelAndView loginPage = new ModelAndView("redirect:/login");
+    public ModelAndView logIn(@RequestParam(Constants.USERNAME) String username,
+                              @RequestParam(Constants.PASSWORD) String password,
+                              HttpServletResponse response) {
+        ModelAndView loginPage = new ModelAndView(Constants.LOGIN);
         if (!userService.checkIfCorrect(username, password)) {
-            log.debug("User {} not found", username);
+            log.debug(Constants.USER_NOT_FOUND_LOGGER, username);
+            loginPage.addObject(Constants.ERROR, Constants.USER_NOT_FOUND);
             return loginPage;
         }
         User user = userService.get(username).get();
         long id = user.getId();
         CookieSetter.addCookie(response, Constants.ID, String.valueOf(id));
-        return new ModelAndView("redirect:/");
+        return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
     }
 }

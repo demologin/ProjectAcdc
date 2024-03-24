@@ -17,8 +17,22 @@ public class Constants {
     public static final String QUEST_TEMPLATE = "questTemplate";
     public static final String EDIT_USER = "edit-user";
     public static final String USER = "user";
+    public static final String SIGNUP = "signup";
+    public static final String USERS = "users";
+    public static final String USER_LIST = "user-list";
+    public static final String CREATE_QUEST = "create-quest";
+    public static final String FAILED_TO_CREATE_USER_BECAUSE_IT_ALREADY_EXISTS = "Failed to create user because it already exists";
+    public static final String SOMETHING_WENT_WRONG = "Something went wrong";
+    public static final String USER_WITH_USERNAME_CREATED = "User with username {} created";
+    public static final String DEFAULT_ID = "0";
+    public static final String JSON = "json";
+    public static final String LOGIN = "login";
+    public static final String USER_NOT_FOUND_LOGGER = "User {} not found";
+    public static final String ERROR = "error";
+    public static final String USER_NOT_FOUND = "User not found";
 
-    private Constants(){}
+    private Constants() {
+    }
 
     public static final int DEFAULT_COOKIE_LIVING_TIME = 60;
     public static final String USERNAME = "username";

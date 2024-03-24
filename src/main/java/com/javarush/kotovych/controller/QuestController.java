@@ -5,8 +5,8 @@ import com.javarush.kotovych.entity.User;
 import com.javarush.kotovych.quest.Quest;
 import com.javarush.kotovych.service.QuestService;
 import com.javarush.kotovych.service.UserService;
-import com.javarush.kotovych.util.CookieSetter;
-import jakarta.servlet.http.HttpServletResponse;
+import com.javarush.kotovych.util.SessionAttributeSetter;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,24 +15,23 @@ import java.util.Optional;
 
 @RestController
 public class QuestController {
-    @Autowired
-    QuestService questService;
 
     @Autowired
-    UserService userService;
+    private QuestService questService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/quest")
     public ModelAndView showQuest(@RequestParam(Constants.NAME) String questName,
-                                  @CookieValue(value = Constants.CURRENT_PART, defaultValue = Constants.START) String currentPart,
-                                  @CookieValue(value = Constants.ID, defaultValue = "0") long id,
-                                  HttpServletResponse response) {
-
-        Optional<User> userOptional = userService.get(id);
-        if(userOptional.isPresent()) {
-            User user = userOptional.get();
+                                  @SessionAttribute(name = Constants.CURRENT_PART) String currentPart,
+                                  @CookieValue(value = Constants.ID, defaultValue = Constants.DEFAULT_ID) long id,
+                                  HttpServletRequest request) {
+        if (userService.checkIfExists(id)) {
+            User user = userService.get(id).get();
             setStatistics(user, currentPart);
 
-            CookieSetter.addCookie(response, Constants.NAME, questName);
+            SessionAttributeSetter.addSessionAttribute(request, Constants.NAME, questName);
 
             ModelAndView modelAndView = new ModelAndView(chooseTemplate(currentPart));
             Optional<Quest> questOptional = questService.get(questName);
@@ -48,24 +47,24 @@ public class QuestController {
 
     @PostMapping("/quest")
     public ModelAndView changeCurrentPart(@RequestParam(Constants.CURRENT_PART) String currentPart,
-                                          @CookieValue(Constants.NAME) String questName,
-                                          HttpServletResponse response) {
-        CookieSetter.addCookie(response, Constants.CURRENT_PART, currentPart);
+                                          @SessionAttribute(Constants.NAME) String questName,
+                                          HttpServletRequest request) {
+        SessionAttributeSetter.addSessionAttribute(request, Constants.CURRENT_PART, currentPart);
         return new ModelAndView("redirect:/quest?name=" + questName);
     }
 
-    private String chooseTemplate(String currentPart){
-        if(currentPart.contains(Constants.WIN)){
+    private String chooseTemplate(String currentPart) {
+        if (currentPart.contains(Constants.WIN)) {
             return Constants.WIN_TEMPLATE;
         } else if (currentPart.contains(Constants.GAME_OVER)) {
             return Constants.GAME_OVER_TEMPLATE;
-        } else{
-           return Constants.QUEST_TEMPLATE;
+        } else {
+            return Constants.QUEST_TEMPLATE;
         }
     }
 
-    private void setStatistics(User user, String currentPart){
-        if(currentPart.contains(Constants.WIN)) {
+    private void setStatistics(User user, String currentPart) {
+        if (currentPart.contains(Constants.WIN)) {
             int wins = user.getWins();
             user.setWins(wins + 1);
         } else if (currentPart.contains(Constants.GAME_OVER)) {

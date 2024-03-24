@@ -43,7 +43,7 @@ public class QuestService {
     }
 
     public void createIfNotExists(Quest quest) {
-        if(get(quest.getName()).isEmpty()){
+        if (get(quest.getName()).isEmpty()) {
             create(quest);
         }
     }

@@ -5,9 +5,7 @@ import com.javarush.kotovych.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -45,22 +43,20 @@ public class UserService {
     }
 
     public boolean checkIfCorrect(String login, String password) {
-        Optional<User> userOptional = userRepository.get(login);
-        if(userOptional.isPresent()) {
-            User user = userOptional.get();
-            if(!user.getPassword().equals(password)) {
-                return false;
-            }
-            return true;
+        if (checkIfExists(login)) {
+            User user = get(login).get();
+            return user.getPassword().equals(password);
         }
         return false;
     }
 
     public boolean checkIfExists(long id) {
         Optional<User> userOptional = userRepository.get(id);
-        if(userOptional.isPresent()) {
-            return true;
-        }
-        return false;
+        return userOptional.isPresent();
+    }
+
+    public boolean checkIfExists(String username) {
+        Optional<User> userOptional = userRepository.get(username);
+        return userOptional.isPresent();
     }
 }
