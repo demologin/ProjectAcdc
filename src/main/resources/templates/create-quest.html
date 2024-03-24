@@ -29,6 +29,10 @@
         </div>
     </div>
 </nav>
+<div th:if="${error}" class="alert alert-danger mt-3" role="alert">
+    Не удалось распарсить JSON. Пожалуйста, убедитесь, что JSON введен корректно.
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto">
@@ -151,7 +155,7 @@
         textArea.select();
         document.execCommand('copy');
         document.body.removeChild(textArea);
-        alert("Текст скопирован!");
+        alert("Пример скопирован!");
     });
 </script>
 </body>

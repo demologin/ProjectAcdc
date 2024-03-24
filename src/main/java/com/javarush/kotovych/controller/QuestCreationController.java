@@ -37,10 +37,12 @@ public class QuestCreationController {
                 log.info(Constants.QUEST_CREATED_LOG, quest.getName());
             } catch (Exception e) {
                 log.info(FAILED_TO_CREATE_QUEST_LOG);
-                return new ModelAndView(Constants.CREATE_QUEST);
+                ModelAndView modelAndView = new ModelAndView(Constants.CREATE_QUEST);
+                modelAndView.addObject(Constants.ERROR, true);
+                return modelAndView;
             }
             questService.createIfNotExists(quest);
-            return new ModelAndView("redirect:/quest?name=" + quest.getName());
+            return new ModelAndView(Constants.REDIRECT_QUEST_NAME + quest.getName());
         }
         return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
     }

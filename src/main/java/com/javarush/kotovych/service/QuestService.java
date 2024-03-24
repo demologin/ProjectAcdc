@@ -1,22 +1,28 @@
 package com.javarush.kotovych.service;
 
-import com.javarush.kotovych.entity.User;
+import com.javarush.kotovych.constants.Constants;
+import com.javarush.kotovych.controller.MainPageController;
 import com.javarush.kotovych.quest.Quest;
 import com.javarush.kotovych.repository.QuestRepository;
+import com.javarush.kotovych.util.QuestParser;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 import java.util.Optional;
 
 @Service
+@RestController
 public class QuestService {
 
     @Autowired
-    private final QuestRepository questRepository;
+    private QuestRepository questRepository;
 
-    public QuestService(QuestRepository questRepository) {
-        this.questRepository = questRepository;
+    @PostConstruct
+    public void init() {
+        addDefaultQuests();
     }
 
     public void create(Quest quest) {
@@ -57,5 +63,12 @@ public class QuestService {
     public boolean checkIfExists(String name) {
         Optional<Quest> userOptional = questRepository.get(name);
         return userOptional.isPresent();
+    }
+
+    private void addDefaultQuests(){
+        for(String path : Constants.DEFAULT_QUESTS) {
+            Quest quest = QuestParser.parseFromJsonFile(MainPageController.class.getResource(path));
+            createIfNotExists(quest);
+        }
     }
 }

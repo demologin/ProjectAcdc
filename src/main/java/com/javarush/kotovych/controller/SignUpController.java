@@ -42,7 +42,9 @@ public class SignUpController {
             return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
         } else {
             log.info(Constants.FAILED_TO_CREATE_USER_BECAUSE_IT_ALREADY_EXISTS);
-            throw new AppException(Constants.SOMETHING_WENT_WRONG);
+            ModelAndView modelAndView = new ModelAndView(Constants.SIGNUP);
+            modelAndView.addObject(Constants.ERROR, Constants.FAILED_TO_CREATE_USER_BECAUSE_IT_ALREADY_EXISTS);
+            return modelAndView;
         }
     }
 }
