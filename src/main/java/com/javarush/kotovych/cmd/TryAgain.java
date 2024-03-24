@@ -12,9 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class TryAgain {
 
     @GetMapping("/try-again")
-    public ModelAndView tryAgain(@RequestParam("name") String questName,
+    public ModelAndView tryAgain(@RequestParam(Constants.NAME) String questName,
                                  HttpServletResponse response) {
-        CookieSetter.addCookie(response, Constants.IN_GAME, "false");
+        CookieSetter.addCookie(response, Constants.CURRENT_PART, Constants.START);
         return new ModelAndView("redirect:/quest?name=" + questName);
     }
 }

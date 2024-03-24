@@ -1,0 +1,94 @@
+{
+  "name": "JavaAdventure",
+  "description": "Удивительный мир магии",
+  "questions": {
+    "start": {
+      "situation": "Вы пишите проект и столкнулись с ошибкой",
+      "text": "Что будете делать?",
+      "firstAnswer": "Спросить ChatGPT",
+      "secondAnswer": "Попробовать решить",
+      "firstNextQuestion": "ask-chat-gpt-game-over",
+      "secondNextQuestion": "try-fixing"
+    },
+    "ask-chat-gpt-game-over": {
+      "situation": "Вы сделали так как сказал ChatGPT но забыли сделать коммит",
+      "text": "Ваш проект сломался",
+      "firstAnswer": "",
+      "secondAnswer": "",
+      "firstNextQuestion": "",
+      "secondNextQuestion": ""
+    },
+    "try-fixing": {
+      "situation": "У вас получилось починить ошибку",
+      "text": "Что будете делать дальше?",
+      "firstAnswer": "Добавить новую функцию",
+      "secondAnswer": "Доработать старую",
+      "firstNextQuestion": "add-new-function",
+      "secondNextQuestion": "make-old-function-better"
+    },
+    "add-new-function": {
+      "situation": "Вы добавили новую функцию",
+      "text": "У вас километровый stack trace",
+      "firstAnswer": "Запустить опять",
+      "secondAnswer": "Удалить новую функцию",
+      "firstNextQuestion": "start-code-again",
+      "secondNextQuestion": "delete-new-function"
+    },
+    "make-old-function-better": {
+      "situation": "Вы доработали старую функцию",
+      "text": "Ваш код стал быстрее",
+      "firstAnswer": "Сделать pull request",
+      "secondAnswer": "Добавить что-то новое",
+      "firstNextQuestion": "make-pr-game-over",
+      "secondNextQuestion": "add-something-new-game-over"
+    },
+    "start-code-again": {
+      "situation": "Код запустился",
+      "text": "JVM стало вас жалко и она запустилка код без ошибок",
+      "firstAnswer": "Сделать pull request",
+      "secondAnswer": "Закрыть проект",
+      "firstNextQuestion": "pull-request-plus-new-functions-win",
+      "secondNextQuestion": "jvm-is-mad-game-over"
+    },
+    "make-pr-game-over": {
+      "situation": "Вы не добавили ничего нового",
+      "text": "Поражение",
+      "firstAnswer": "",
+      "secondAnswer": "",
+      "firstNextQuestion": "",
+      "secondNextQuestion": ""
+    },
+    "add-something-new-game-over" : {
+      "situation": "Вы устали и запутались в коде",
+      "text": "Поражение",
+      "firstAnswer": "",
+      "secondAnswer": "",
+      "firstNextQuestion": "",
+      "secondNextQuestion": ""
+    },
+    "pull-request-plus-new-functions-win": {
+      "situation": "Вы добавили что-то новое и сделали pull request",
+      "text": "Победа",
+      "firstAnswer": "",
+      "secondAnswer": "",
+      "firstNextQuestion": "",
+      "secondNextQuestion": ""
+    },
+    "jvm-is-mad-game-over": {
+      "situation": "JVM не понравилась такая наглость",
+      "text": "Поражение",
+      "firstAnswer": "",
+      "secondAnswer": "",
+      "firstNextQuestion": "",
+      "secondNextQuestion": ""
+    },
+    "delete-new-function": {
+      "situation": "Вы не добавили ничего нового",
+      "text": "Поражение",
+      "firstAnswer": "",
+      "secondAnswer": "",
+      "firstNextQuestion": "",
+      "secondNextQuestion": ""
+    }
+  }
+}

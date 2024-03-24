@@ -32,18 +32,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1 class="font-weight-bold">Твоя ложь разоблачили.</h1>
-            <p>Поражение</p>
+            <h1 th:text="${question.getSituation()}" class="font-weight-bold">text</h1>
+            <p th:text="${question.getText()}">text</p>
             <div class="text-center">
-                <a th:href="@{/}" class="btn btn-danger mr-1">К квестам</a>
-                <a th:href="@{/try-again(name=${quest.getName()})}" class="btn btn-danger">Попробовать снова</a>
+                <a th:href="@{/}" class="btn btn-success">К квестам</a>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
 </body>
 </html>

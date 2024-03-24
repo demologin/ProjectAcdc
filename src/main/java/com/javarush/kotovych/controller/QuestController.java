@@ -15,7 +15,6 @@ import java.util.Optional;
 
 @RestController
 public class QuestController {
-
     @Autowired
     QuestService questService;
 
@@ -28,7 +27,44 @@ public class QuestController {
                                   @CookieValue(value = Constants.ID) long id,
                                   HttpServletResponse response) {
 
-        User user = userService.get(id).get();
+        Optional<User> userOptional = userService.get(id);
+        if(userOptional.isPresent()) {
+            User user = userOptional.get();
+            setStatistics(user, currentPart);
+
+            CookieSetter.addCookie(response, Constants.NAME, questName);
+
+            ModelAndView modelAndView = new ModelAndView(chooseTemplate(currentPart));
+            Optional<Quest> questOptional = questService.get(questName);
+            if (questOptional.isPresent()) {
+                Quest quest = questOptional.get();
+                modelAndView.addObject(Constants.QUEST, quest);
+                modelAndView.addObject(Constants.QUESTION, quest.getQuestions().get(currentPart));
+                return modelAndView;
+            }
+        }
+        return new ModelAndView("redirect:/");
+    }
+
+    @PostMapping("/quest")
+    public ModelAndView changeCurrentPart(@RequestParam(Constants.CURRENT_PART) String currentPart,
+                                          @CookieValue(Constants.NAME) String questName,
+                                          HttpServletResponse response) {
+        CookieSetter.addCookie(response, Constants.CURRENT_PART, currentPart);
+        return new ModelAndView("redirect:/quest?name=" + questName);
+    }
+
+    private String chooseTemplate(String currentPart){
+        if(currentPart.contains(Constants.WIN)){
+            return "winTemplate";
+        } else if (currentPart.contains(Constants.GAME_OVER)) {
+            return "game-over-template";
+        } else{
+           return "questTemplate";
+        }
+    }
+
+    private void setStatistics(User user, String currentPart){
         if(currentPart.contains(Constants.WIN)) {
             int wins = user.getWins();
             user.setWins(wins + 1);
@@ -36,23 +72,5 @@ public class QuestController {
             int losses = user.getLosses();
             user.setLosses(losses + 1);
         }
-
-        Optional<Quest> questOptional = questService.get(questName);
-        if (questOptional.isPresent()) {
-            Quest quest = questOptional.get();
-            CookieSetter.addCookie(response, Constants.CURRENT_QUEST, questName);
-            ModelAndView modelAndView = new ModelAndView("%s/%s".formatted(questName, currentPart));
-            modelAndView.addObject(Constants.QUEST, quest);
-            return modelAndView;
-        }
-        return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
-    }
-
-    @PostMapping("/quest")
-    public ModelAndView changeCurrentPart(@RequestParam(Constants.CURRENT_PART) String currentPart,
-                                          @CookieValue(Constants.CURRENT_QUEST) String questName,
-                                          HttpServletResponse response) {
-        CookieSetter.addCookie(response, Constants.CURRENT_PART, currentPart);
-        return new ModelAndView("redirect:/quest?name=" + questName);
     }
 }
