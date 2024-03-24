@@ -15,19 +15,19 @@ public class EditUserController {
     private UserService userService;
 
     @GetMapping("/edit-user")
-    public ModelAndView getEditUserPage(@CookieValue(value = "id", defaultValue = "0") long id) {
-        ModelAndView modelAndView = new ModelAndView("edit-user");
+    public ModelAndView getEditUserPage(@CookieValue(value = Constants.ID, defaultValue = "0") long id) {
+        ModelAndView modelAndView = new ModelAndView(Constants.EDIT_USER);
         if(id != 0) {
             Optional<User> user = userService.get(id);
             if(user.isPresent()) {
-                modelAndView.addObject("user", user.get());
+                modelAndView.addObject(Constants.USER, user.get());
                 return modelAndView;
             }
         }
-        return new ModelAndView("redirect:/");
+        return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
     }
 
-    @PostMapping("edit-user")
+    @PostMapping(Constants.EDIT_USER)
     public ModelAndView editUser(@RequestParam(Constants.USERNAME) String editUsername,
                                  @RequestParam(Constants.PASSWORD) String editPassword,
                                  @CookieValue(Constants.ID) String id) {
@@ -45,6 +45,6 @@ public class EditUserController {
             user.setPassword(editPassword);
             userService.update(user);
         }
-        return new ModelAndView("redirect:/");
+        return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
     }
 }

@@ -12,6 +12,11 @@ public class Constants {
     public static final String GAME_OVER = "game-over";
     public static final String QUEST = "quest";
     public static final String QUESTION = "question";
+    public static final String WIN_TEMPLATE = "winTemplate";
+    public static final String GAME_OVER_TEMPLATE = "game-over-template";
+    public static final String QUEST_TEMPLATE = "questTemplate";
+    public static final String EDIT_USER = "edit-user";
+    public static final String USER = "user";
 
     private Constants(){}
 

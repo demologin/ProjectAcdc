@@ -11,8 +11,8 @@
       "secondNextQuestion": "try-fixing"
     },
     "ask-chat-gpt-game-over": {
-      "situation": "Вы сделали так как сказал ChatGPT но забыли сделать коммит",
-      "text": "Ваш проект сломался",
+      "situation": "Ваш проект сломался",
+      "text": "Вы сделали так как сказал ChatGPT но забыли сделать коммит",
       "firstAnswer": "",
       "secondAnswer": "",
       "firstNextQuestion": "",
@@ -82,7 +82,7 @@
       "firstNextQuestion": "",
       "secondNextQuestion": ""
     },
-    "delete-new-function": {
+    "delete-new-function-game-over": {
       "situation": "Вы не добавили ничего нового",
       "text": "Поражение",
       "firstAnswer": "",

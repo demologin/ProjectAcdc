@@ -24,7 +24,7 @@ public class QuestController {
     @GetMapping("/quest")
     public ModelAndView showQuest(@RequestParam(Constants.NAME) String questName,
                                   @CookieValue(value = Constants.CURRENT_PART, defaultValue = Constants.START) String currentPart,
-                                  @CookieValue(value = Constants.ID) long id,
+                                  @CookieValue(value = Constants.ID, defaultValue = "0") long id,
                                   HttpServletResponse response) {
 
         Optional<User> userOptional = userService.get(id);
@@ -43,7 +43,7 @@ public class QuestController {
                 return modelAndView;
             }
         }
-        return new ModelAndView("redirect:/");
+        return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
     }
 
     @PostMapping("/quest")
@@ -56,11 +56,11 @@ public class QuestController {
 
     private String chooseTemplate(String currentPart){
         if(currentPart.contains(Constants.WIN)){
-            return "winTemplate";
+            return Constants.WIN_TEMPLATE;
         } else if (currentPart.contains(Constants.GAME_OVER)) {
-            return "game-over-template";
+            return Constants.GAME_OVER_TEMPLATE;
         } else{
-           return "questTemplate";
+           return Constants.QUEST_TEMPLATE;
         }
     }
 
