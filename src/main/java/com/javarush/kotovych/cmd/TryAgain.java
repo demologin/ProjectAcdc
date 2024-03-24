@@ -21,6 +21,6 @@ public class TryAgain {
         log.debug(Constants.REDIRECTING_TO_QUEST_LOG, questName);
         log.info(Constants.USER_IS_TRYING_AGAIN_QUEST_LOG, questName);
         SessionAttributeSetter.addSessionAttribute(request, Constants.CURRENT_PART, Constants.START);
-        return new ModelAndView("redirect:/quest?name=" + questName);
+        return new ModelAndView(Constants.REDIRECT_QUEST_NAME + questName);
     }
 }

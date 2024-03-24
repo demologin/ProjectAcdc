@@ -50,7 +50,7 @@ public class QuestController {
                                           @SessionAttribute(Constants.NAME) String questName,
                                           HttpServletRequest request) {
         SessionAttributeSetter.addSessionAttribute(request, Constants.CURRENT_PART, currentPart);
-        return new ModelAndView("redirect:/quest?name=" + questName);
+        return new ModelAndView(Constants.REDIRECT_QUEST_NAME + questName);
     }
 
     private String chooseTemplate(String currentPart) {

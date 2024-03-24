@@ -38,7 +38,9 @@ public class Constants {
     public static final String ACCOUNT_UPDATED_LOG = "account {} updated";
     public static final String USER_LOGGED_IN_LOG = "user {} logged in";
     public static final String QUEST_CREATED_LOG = "quest {} created";
-    public static final int DEFAULT_COOKIE_LIVING_TIME = 60;
+
+    public static final int DEFAULT_COOKIE_LIVING_TIME = 24 * 60 * 60;
+
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
     public static final String ID = "id";
