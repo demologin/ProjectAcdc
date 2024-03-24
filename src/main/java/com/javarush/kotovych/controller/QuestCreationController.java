@@ -5,13 +5,17 @@ import com.javarush.kotovych.quest.Quest;
 import com.javarush.kotovych.service.QuestService;
 import com.javarush.kotovych.service.UserService;
 import com.javarush.kotovych.util.QuestParser;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+
+@Slf4j
 @RestController
 public class QuestCreationController {
 
+    public static final String FAILED_TO_CREATE_QUEST_LOG = "failed to create quest";
     @Autowired
     private QuestService questService;
 
@@ -30,7 +34,9 @@ public class QuestCreationController {
             Quest quest;
             try {
                 quest = QuestParser.parseFromJson(json);
+                log.info(Constants.QUEST_CREATED_LOG, quest.getName());
             } catch (Exception e) {
+                log.info(FAILED_TO_CREATE_QUEST_LOG);
                 return new ModelAndView(Constants.CREATE_QUEST);
             }
             questService.createIfNotExists(quest);

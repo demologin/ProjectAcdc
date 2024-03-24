@@ -33,9 +33,9 @@ public class QuestController {
 
             SessionAttributeSetter.addSessionAttribute(request, Constants.NAME, questName);
 
-            ModelAndView modelAndView = new ModelAndView(chooseTemplate(currentPart));
-            Optional<Quest> questOptional = questService.get(questName);
-            if (questOptional.isPresent()) {
+            if (questService.checkIfExists(questName)) {
+                ModelAndView modelAndView = new ModelAndView(chooseTemplate(currentPart));
+                Optional<Quest> questOptional = questService.get(questName);
                 Quest quest = questOptional.get();
                 modelAndView.addObject(Constants.QUEST, quest);
                 modelAndView.addObject(Constants.QUESTION, quest.getQuestions().get(currentPart));

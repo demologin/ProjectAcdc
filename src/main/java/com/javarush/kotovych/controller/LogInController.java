@@ -33,11 +33,13 @@ public class LogInController {
         if (!userService.checkIfCorrect(username, password)) {
             log.debug(Constants.USER_NOT_FOUND_LOGGER, username);
             loginPage.addObject(Constants.ERROR, Constants.USER_NOT_FOUND);
+            log.info(Constants.USER_NOT_FOUND_LOGGER, username);
             return loginPage;
         }
         User user = userService.get(username).get();
         long id = user.getId();
         CookieSetter.addCookie(response, Constants.ID, String.valueOf(id));
+        log.info(Constants.USER_LOGGED_IN_LOG, username);
         return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
     }
 }

@@ -1,6 +1,7 @@
 package com.javarush.kotovych.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.javarush.kotovych.constants.Constants;
 import com.javarush.kotovych.exception.AppException;
 import com.javarush.kotovych.quest.Quest;
 import lombok.experimental.UtilityClass;
@@ -18,7 +19,7 @@ public class QuestParser {
         try {
             return objectMapper.readValue(json, Quest.class);
         } catch (Exception e) {
-            log.debug("Could not parse quest json", e);
+            log.debug(Constants.COULD_NOT_PARSE_QUEST_JSON, e);
             throw new AppException(e);
         }
     }
@@ -27,7 +28,7 @@ public class QuestParser {
         try {
             return objectMapper.readValue(url, Quest.class);
         } catch (Exception e) {
-            log.debug("Could not parse quest json", e);
+            log.debug(Constants.COULD_NOT_PARSE_QUEST_JSON, e);
             throw new AppException(e);
         }
     }

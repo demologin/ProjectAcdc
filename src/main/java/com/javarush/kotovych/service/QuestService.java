@@ -1,5 +1,6 @@
 package com.javarush.kotovych.service;
 
+import com.javarush.kotovych.entity.User;
 import com.javarush.kotovych.quest.Quest;
 import com.javarush.kotovych.repository.QuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,15 @@ public class QuestService {
         if (get(quest.getName()).isEmpty()) {
             create(quest);
         }
+    }
+
+    public boolean checkIfExists(long id) {
+        Optional<Quest> userOptional = questRepository.get(id);
+        return userOptional.isPresent();
+    }
+
+    public boolean checkIfExists(String name) {
+        Optional<Quest> userOptional = questRepository.get(name);
+        return userOptional.isPresent();
     }
 }
