@@ -1,6 +1,7 @@
 package com.javarush.kotovych.controller;
 
 import com.javarush.kotovych.constants.Constants;
+import com.javarush.kotovych.constants.LoggerConstants;
 import com.javarush.kotovych.entity.User;
 import com.javarush.kotovych.quest.Quest;
 import com.javarush.kotovych.service.QuestService;
@@ -37,7 +38,7 @@ public class QuestCreationController {
             try {
                 quest = QuestParser.parseFromJson(json);
                 quest.setAuthor(author);
-                log.info(Constants.QUEST_CREATED_LOG, quest.getName());
+                log.info(LoggerConstants.QUEST_CREATED_LOG, quest.getName());
             } catch (Exception e) {
                 log.info(Constants.FAILED_TO_CREATE_QUEST);
                 ModelAndView modelAndView = new ModelAndView(Constants.CREATE_QUEST);

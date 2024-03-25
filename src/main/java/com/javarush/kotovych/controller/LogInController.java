@@ -1,6 +1,7 @@
 package com.javarush.kotovych.controller;
 
 import com.javarush.kotovych.constants.Constants;
+import com.javarush.kotovych.constants.LoggerConstants;
 import com.javarush.kotovych.entity.User;
 import com.javarush.kotovych.service.UserService;
 import com.javarush.kotovych.util.CookieSetter;
@@ -39,7 +40,7 @@ public class LogInController {
         User user = userService.get(username).get();
         long id = user.getId();
         CookieSetter.addCookie(response, Constants.ID, String.valueOf(id));
-        log.info(Constants.USER_LOGGED_IN_LOG, username);
+        log.info(LoggerConstants.USER_LOGGED_IN_LOG, username);
         return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
     }
 }
