@@ -39,9 +39,12 @@
             </div>
             <div class="text-center">
                 <form action="/quest" method="post">
-                    <input type="hidden" name="name" th:value="${quest.getName()}"/>
-                    <button th:if="${!question.getFirstAnswer().isBlank()}" type="submit" name="currentPart" th:value="${question.getFirstNextQuestion()}" th:text="${question.getFirstAnswer()}" class="btn btn-primary mr-2">text</button>
-                    <button th:if="${!question.getSecondAnswer().isBlank()}" type="submit" name="currentPart" th:value="${question.getSecondNextQuestion()}" th:text="${question.getSecondAnswer()}" class="btn btn-primary">text</button>
+                    <div th:each="entry : ${question.getAnswers().entrySet()}">
+                        <input type="hidden" name="name" th:value="${quest.getName()}"/>
+                        <button type="submit" name="currentPart" th:value="${entry.getValue()}"
+                                th:text="${entry.getKey()}" class="btn btn-primary mr-2 mb-1">text
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

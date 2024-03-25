@@ -1,151 +1,110 @@
 {
-  "name": "AlienEncounter",
-  "description": "ChatGPT Generated",
+  "name": "Alien Encounter",
+  "description": "ChatGPT generated",
   "questions": {
     "start": {
       "situation": "Вы на планете, населенной инопланетянами",
       "text": "Что делать?",
-      "firstAnswer": "Исследовать местность",
-      "secondAnswer": "Попробовать установить контакт",
-      "firstNextQuestion": "explore-planet",
-      "secondNextQuestion": "attempt-contact"
+      "answers": {
+        "Исследовать местность": "explore-planet",
+        "Попробовать установить контакт": "attempt-contact"
+      }
     },
     "explore-planet": {
       "situation": "Обнаружили странные растения и существа",
       "text": "Что делать?",
-      "firstAnswer": "Собрать образцы",
-      "secondAnswer": "Вернуться к кораблю",
-      "firstNextQuestion": "collect-samples",
-      "secondNextQuestion": "return-to-ship"
+      "answers": {
+        "Собрать образцы": "collect-samples",
+        "Вернуться к кораблю": "return-to-ship"
+      }
     },
     "attempt-contact": {
       "situation": "Попытка установить контакт с инопланетянами",
       "text": "Как?",
-      "firstAnswer": "Показать дружелюбие",
-      "secondAnswer": "Использовать технологию",
-      "firstNextQuestion": "friendly-gesture",
-      "secondNextQuestion": "use-technology"
+      "answers": {
+        "Показать дружелюбие": "friendly-gesture",
+        "Использовать технологию": "use-technology"
+      }
     },
     "collect-samples": {
       "situation": "Собрали образцы",
       "text": "Что с ними делать?",
-      "firstAnswer": "Продолжить исследования",
-      "secondAnswer": "Вернуться на корабль",
-      "firstNextQuestion": "continue-exploring",
-      "secondNextQuestion": "analyze-samples"
+      "answers": {
+        "Продолжить исследования": "continue-exploring",
+        "Вернуться на корабль": "return-to-ship"
+      }
     },
     "return-to-ship": {
       "situation": "Вернулись на корабль",
       "text": "Что дальше?",
-      "firstAnswer": "Продолжить исследования",
-      "secondAnswer": "Вернуться на базу",
-      "firstNextQuestion": "continue-exploring",
-      "secondNextQuestion": "return-to-base"
+      "answers": {
+        "Продолжить исследования": "continue-exploring",
+        "Вернуться на базу": "return-to-base"
+      }
     },
     "friendly-gesture": {
       "situation": "Дружелюбие не сработало",
       "text": "Что теперь?",
-      "firstAnswer": "Попробовать ещё раз",
-      "secondAnswer": "Вернуться на корабль",
-      "firstNextQuestion": "attempt-contact",
-      "secondNextQuestion": "return-to-ship"
+      "answers": {
+        "Попробовать ещё раз": "attempt-contact",
+        "Вернуться на корабль": "return-to-ship"
+      }
     },
     "use-technology": {
       "situation": "Технология помогла установить контакт",
       "text": "Дальше что?",
-      "firstAnswer": "Обмениваться знаниями",
-      "secondAnswer": "Попросить помощи в технологиях",
-      "firstNextQuestion": "exchange-knowledge-win",
-      "secondNextQuestion": "(win)ask-for-technology-help"
-    },
-    "analyze-samples": {
-      "situation": "Анализ образцов показал необычные свойства",
-      "text": "Что делать с данными?",
-      "firstAnswer": "Сохранить для исследований",
-      "secondAnswer": "Поделиться с научным сообществом",
-      "firstNextQuestion": "(win)save-data",
-      "secondNextQuestion": "(win)share-data"
+      "answers": {
+        "Обмениваться знаниями": "(win)exchange-knowledge",
+        "Попросить помощи в технологиях": "(win)ask-for-technology-help"
+      }
     },
     "continue-exploring": {
       "situation": "Продолжили исследования",
       "text": "Следующий шаг?",
-      "firstAnswer": "Изучить артефакты",
-      "secondAnswer": "Найти исследовательские объекты",
-      "firstNextQuestion": "(win)study-artifacts",
-      "secondNextQuestion": "(win)discover-research-facilities"
+      "answers": {
+        "Изучить артефакты": "(win)study-artifacts",
+        "Найти исследовательские объекты": "(win)discover-research-facilities"
+      }
     },
     "return-to-base": {
       "situation": "Вернулись на базу",
       "text": "Что дальше?",
-      "firstAnswer": "Составить отчёт",
-      "secondAnswer": "Отправить новую экспедицию",
-      "firstNextQuestion": "(win)write-report",
-      "secondNextQuestion": "(win)send-expedition"
+      "answers": {
+        "Составить отчёт": "(win)write-report",
+        "Отправить новую экспедицию": "(win)send-expedition"
+      }
     },
     "(win)exchange-knowledge": {
       "situation": "Успешный обмен знаниями",
-      "text": "Поздравляю, вы достигли успеха в вашем путешествии!",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "text": "Поздравляю, вы достигли успеха в вашем путешествии!"
     },
     "(win)ask-for-technology-help": {
       "situation": "Инопланетяне помогли вам",
-      "text": "Вы смогли получить новые знания и технологии для дальнейших исследований. Поздравляю, ваша миссия успешна!",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "text": "Вы смогли получить новые знания и технологии для дальнейших исследований. Поздравляю, ваша миссия успешна!"
     },
-    "save-data-win": {
+    "(win)save-data": {
       "situation": "Сохранили данные",
-      "text": "Ваши находки могут стать ключом к новым открытиям в науке. Поздравляю с успешным завершением экспедиции!",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "text": "Ваши находки могут стать ключом к новым открытиям в науке. Поздравляю с успешным завершением экспедиции!"
     },
     "(win)share-data": {
       "situation": "Поделились данными",
-      "text": "Ваши исследования помогут другим ученым в изучении инопланетной жизни. Поздравляю с успешным завершением экспедиции!",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "text": "Ваши исследования помогут другим ученым в изучении инопланетной жизни. Поздравляю с успешным завершением экспедиции!"
     },
     "(win)study-artifacts": {
       "situation": "Изучили артефакты",
-      "text": "Ваши открытия могут раскрыть тайны инопланетной цивилизации. Поздравляю с успешным завершением экспедиции!",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "text": "Ваши открытия могут раскрыть тайны инопланетной цивилизации. Поздравляю с успешным завершением экспедиции!"
     },
     "(win)discover-research-facilities": {
       "situation": "Обнаружили исследовательские объекты",
-      "text": "Эти объекты могут содержать важные знания для дальнейших исследований. Поздравляю с успешным завершением экспедиции!",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "text": "Эти объекты могут содержать важные знания для дальнейших исследований. Поздравляю с успешным завершением экспедиции!"
     },
-    "write-report-win": {
+    "(win)write-report": {
       "situation": "Составили отчёт о проделанной работе",
-      "text": "Ваш отчёт станет основой для дальнейших исследований. Поздравляю с успешным завершением экспедиции!",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "text": "Ваш отчёт станет основой для дальнейших исследований. Поздравляю с успешным завершением экспедиции!"
     },
-    "send-expedition-win": {
+    "(win)send-expedition": {
       "situation": "Отправили экспедицию на дальнейшие исследования",
-      "text": "Ваши результаты будут использованы для новых открытий. Поздравляю с успешным завершением экспедиции!",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "text": "Ваши результаты будут использованы для новых открытий. Поздравляю с успешным завершением экспедиции!"
     }
   }
 }
-

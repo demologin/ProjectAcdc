@@ -27,7 +27,6 @@ public class QuestController {
                                   @SessionAttribute(name = Constants.CURRENT_PART, required = false) String currentPart,
                                   @CookieValue(value = Constants.ID, defaultValue = Constants.DEFAULT_ID) long id,
                                   HttpServletRequest request) {
-
         if (currentPart == null) {
             return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
         }
@@ -44,6 +43,8 @@ public class QuestController {
                 Quest quest = questOptional.get();
                 modelAndView.addObject(Constants.QUEST, quest);
                 modelAndView.addObject(Constants.QUESTION, quest.getQuestions().get(currentPart));
+
+
                 return modelAndView;
             }
         }

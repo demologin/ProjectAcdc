@@ -1,0 +1,86 @@
+{
+  "name": "Java Test",
+  "description": "Разные вопросы про Java",
+  "questions": {
+    "start": {
+      "situation": "Вы на собеседовании на позицию Java разработчика.",
+      "text": "Что такое многопоточность (multithreading) в Java?",
+      "answers": {
+        "Это возможность выполнения нескольких потоков в одном приложении для повышения производительности": "next-question",
+        "Это методика оптимизации работы с памятью": "(game-over)incorrect-answer",
+        "Это процесс создания нескольких экземпляров одного класса": "(game-over)incorrect-answer"
+      }
+    },
+    "(game-over)incorrect-answer": {
+      "situation": "Вы дали неверный ответ.",
+      "text": "К сожалению, это неправильный ответ. Спасибо за участие. Попробуйте еще раз!"
+    },
+    "next-question": {
+      "situation": "Следующий вопрос:",
+      "text": "Что такое синхронизация (synchronization) в многопоточных приложениях?",
+      "answers": {
+        "Это методика определения порядка выполнения потоков": "(game-over)incorrect-answer",
+        "Это процесс слияния нескольких потоков в один для ускорения работы программы": "(game-over)incorrect-answer",
+        "Это механизм, который предотвращает одновременный доступ нескольких потоков к общим данным": "third-question"
+      }
+    },
+    "third-question": {
+      "situation": "Следующий вопрос:",
+      "text": "Что такое deadlock в многопоточных приложениях?",
+      "answers": {
+        "Это ситуация, когда поток зависает пытаясь выполнить код с ошибками ": "(game-over)incorrect-answer",
+        "это ситуация, когда два или более потоков блокируются, ожидая друг друга, чтобы освободить занятые ими ресурсы": "fourth-question",
+        "Это ситуация, когда поток выполняется дольше, чем ожидалось, из-за неправильной настройки приоритетов": "(game-over)incorrect-answer"
+      }
+    },
+    "fourth-question": {
+      "situation": "Следующий вопрос:",
+      "text": "Что такое сервлет (servlet) в Java?",
+      "answers": {
+        "Это интерфейс для создания пользовательских GUI-компонентов": "(game-over)incorrect-answer",
+        "Это Java-классы, которые расширяют возможности сервера, способный обрабатывать запросы от клиентов": "fifth-question",
+        "Это специальный класс, который управляет вводом и выводом в Java приложениях": "(game-over)incorrect-answer"
+      }
+    },
+    "fifth-question": {
+      "situation": "Следующий вопрос:",
+      "text": "Что такое жизненный цикл сервлета в Java?",
+      "answers": {
+        "Это последовательность состояний, через которые проходит сервлет от создания до уничтожения": "sixth-question",
+        "Это период времени, в течение которого сервлет активен и обрабатывает запросы": "(game-over)incorrect-answer",
+        "Это набор методов, которые вызываются при каждом HTTP-запросе к сервлету": "(game-over)incorrect-answer"
+      }
+    },
+    "sixth-question": {
+      "situation": "Следующий вопрос:",
+      "text": "Что такое JSP (JavaServer Pages)?",
+      "answers": {
+        "Это сервер для хранения и управления Java-кодом": "(game-over)incorrect-answer",
+        "Это библиотека для работы с XML-документами в Java приложениях": "(game-over)incorrect-answer",
+        "Это технология, позволяющая создавать динамические веб-страницы с использованием Java": "seventh-question"
+      }
+    },
+    "seventh-question": {
+      "situation": "Следующий вопрос:",
+      "text": "Какие основные методы жизненного цикла сервлета?",
+      "answers": {
+        "start(), execute(), stop()": "(game-over)incorrect-answer",
+        "init(), service(), destroy()": "eighth-question",
+        "begin(), process(), end()": "(game-over)incorrect-answer"
+      }
+    },
+    "eighth-question": {
+      "situation": "Следующий вопрос:",
+      "text": "Какие основные методы интерфейса Runnable в Java?",
+      "answers": {
+        "start(), stop(), resume()": "(game-over)incorrect-answer",
+        "run()": "(win)final-answer",
+        "execute(), yield(), wait()": "(game-over)incorrect-answer"
+      }
+    },
+    "(win)final-answer": {
+      "situation": "Поздравляем!",
+      "text": "Вы прошли все вопросы успешно! Отличная работа!"
+    }
+  }
+}

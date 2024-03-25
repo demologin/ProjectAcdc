@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Map;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,9 +15,5 @@ public class Question {
     private String situation;
     private String text;
 
-    private String firstAnswer;
-    private String secondAnswer;
-
-    private String firstNextQuestion;
-    private String secondNextQuestion;
+    private Map<String, String> answers;
 }

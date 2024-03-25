@@ -3,92 +3,68 @@
   "description": "Удивительный мир магии",
   "questions": {
     "start": {
-      "situation": "Вы пишите проект и столкнулись с ошибкой",
-      "text": "Что будете делать?",
-      "firstAnswer": "Спросить ChatGPT",
-      "secondAnswer": "Попробовать решить",
-      "firstNextQuestion": "(game-over)ask-chat-gpt",
-      "secondNextQuestion": "try-fixing"
+      "situation": "Что будете делать?",
+      "text": "Вы пишите проект и столкнулись с ошибкой",
+      "answers": {
+        "Спросить ChatGPT": "(game-over)ask-chat-gpt",
+        "Попробовать решить": "try-fixing"
+      }
     },
     "(game-over)ask-chat-gpt": {
-      "situation": "Ваш проект сломался",
-      "text": "Вы сделали так как сказал ChatGPT но забыли сделать коммит",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "situation": "Вы сделали так как сказал ChatGPT но забыли сделать коммит",
+      "text": "Ваш проект сломался"
     },
     "try-fixing": {
-      "situation": "У вас получилось починить ошибку",
-      "text": "Что будете делать дальше?",
-      "firstAnswer": "Добавить новую функцию",
-      "secondAnswer": "Доработать старую",
-      "firstNextQuestion": "add-new-function",
-      "secondNextQuestion": "make-old-function-better"
+      "situation": "Что будете делать дальше?",
+      "text": "У вас получилось починить ошибку",
+      "answers": {
+        "Добавить новую функцию": "add-new-function",
+        "Доработать старую": "make-old-function-better"
+      }
     },
     "add-new-function": {
-      "situation": "Вы добавили новую функцию",
-      "text": "У вас километровый stack trace",
-      "firstAnswer": "Запустить опять",
-      "secondAnswer": "Удалить новую функцию",
-      "firstNextQuestion": "start-code-again",
-      "secondNextQuestion": "(game-over)delete-new-function"
+      "situation": "У вас километровый stack trace",
+      "text": "Вы добавили новую функцию",
+      "answers": {
+        "Запустить опять": "start-code-again",
+        "Удалить новую функцию": "(game-over)delete-new-function"
+      }
     },
     "make-old-function-better": {
-      "situation": "Вы доработали старую функцию",
-      "text": "Ваш код стал быстрее",
-      "firstAnswer": "Сделать pull request",
-      "secondAnswer": "Добавить что-то новое",
-      "firstNextQuestion": "(game-over)make-pr",
-      "secondNextQuestion": "(game-over)add-something-new"
+      "situation": "Ваш код стал быстрее",
+      "text": "Вы доработали старую функцию",
+      "answers": {
+        "Сделать pull request": "(game-over)make-pr",
+        "Добавить что-то новое": "(game-over)add-something-new"
+      }
     },
     "start-code-again": {
-      "situation": "Код запустился",
-      "text": "JVM стало вас жалко и она запустила код без ошибок",
-      "firstAnswer": "Сделать pull request",
-      "secondAnswer": "Закрыть проект",
-      "firstNextQuestion": "(win)pull-request-plus-new-functions",
-      "secondNextQuestion": "jvm-is-mad-game-over"
+      "situation": "JVM стало вас жалко и она запустила код без ошибок",
+      "text": "Код запустился",
+      "answers": {
+        "Сделать pull request": "(win)pull-request-plus-new-functions",
+        "Закрыть проект": "(game-over)jvm-is-mad"
+      }
     },
     "(game-over)make-pr": {
-      "situation": "Вы не добавили ничего нового",
-      "text": "Поражение",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "situation": "Поражение",
+      "text": "Вы не добавили ничего нового"
     },
     "(game-over)add-something-new" : {
-      "situation": "Вы устали и запутались в коде",
-      "text": "Поражение",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "situation": "Поражение",
+      "text": "Вы устали и запутались в коде"
     },
     "(win)pull-request-plus-new-functions": {
       "situation": "Победа",
-      "text": "Вы добавили что-то новое и сделали pull request",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "text": "Вы добавили что-то новое и сделали pull request"
     },
     "(game-over)jvm-is-mad": {
-      "situation": "JVM не понравилась такая наглость",
-      "text": "Поражение",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "situation": "Поражение",
+      "text": "JVM не понравилась такая наглость"
     },
     "(game-over)delete-new-function": {
-      "situation": "Вы не добавили ничего нового",
-      "text": "Поражение",
-      "firstAnswer": "",
-      "secondAnswer": "",
-      "firstNextQuestion": "",
-      "secondNextQuestion": ""
+      "situation": "Поражение",
+      "text": "Вы не добавили ничего нового"
     }
   }
 }
