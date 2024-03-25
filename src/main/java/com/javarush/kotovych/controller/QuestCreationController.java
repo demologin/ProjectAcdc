@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class QuestCreationController {
 
-    public static final String FAILED_TO_CREATE_QUEST_LOG = "failed to create quest";
     @Autowired
     private QuestService questService;
 
@@ -40,7 +39,7 @@ public class QuestCreationController {
                 quest.setAuthor(author);
                 log.info(Constants.QUEST_CREATED_LOG, quest.getName());
             } catch (Exception e) {
-                log.info(FAILED_TO_CREATE_QUEST_LOG);
+                log.info(Constants.FAILED_TO_CREATE_QUEST);
                 ModelAndView modelAndView = new ModelAndView(Constants.CREATE_QUEST);
                 modelAndView.addObject(Constants.ERROR, true);
                 return modelAndView;

@@ -50,4 +50,6 @@ public class Constants {
     public static final List<String> DEFAULT_QUESTS = List.of("/javaQuest.json",
             "/aliensQuest.json",
             "/javaTestQuest.json");
+    public static final String AUTHOR = "author";
+    public static final String FAILED_TO_CREATE_QUEST = "failed to create quest";
 }

@@ -43,8 +43,9 @@ public class QuestController {
                 Quest quest = questOptional.get();
                 modelAndView.addObject(Constants.QUEST, quest);
                 modelAndView.addObject(Constants.QUESTION, quest.getQuestions().get(currentPart));
+                modelAndView.addObject(Constants.AUTHOR, user.getLogin().equals(quest.getAuthor()));
 
-
+                System.out.println(modelAndView.getModel().get(Constants.AUTHOR));
                 return modelAndView;
             }
         }

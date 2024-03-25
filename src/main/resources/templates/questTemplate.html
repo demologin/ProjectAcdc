@@ -18,6 +18,13 @@
             color: #6c757d !important; /* цвет ссылок в верхней панели навигации */
             margin-right: 10px; /* расстояние между ссылками */
         }
+
+        /* Стили для кнопки удаления квеста */
+        .delete-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
     </style>
 
 </head>
@@ -50,5 +57,14 @@
         </div>
     </div>
 </div>
+
+<!-- Кнопка для удаления квеста -->
+<div class="delete-button" th:if="${author}">
+    <form action="/delete-quest" method="post">
+        <input type="hidden" name="id" th:value="${quest.getId()}"/>
+        <button type="submit" class="btn btn-danger">Удалить квест</button>
+    </form>
+</div>
+
 </body>
 </html>
