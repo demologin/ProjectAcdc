@@ -73,7 +73,7 @@ public class QuestService {
     }
 
     public void delete(long id) {
-        if(checkIfExists(id)) {
+        if (checkIfExists(id)) {
             Quest quest = get(id).get();
             questRepository.delete(quest);
         }

@@ -24,8 +24,11 @@ public class QuestCreationController {
     private UserService userService;
 
     @GetMapping("/create-quest")
-    public ModelAndView getCreateQuestPage() {
-        return new ModelAndView(Constants.CREATE_QUEST);
+    public ModelAndView getCreateQuestPage(@CookieValue(value = Constants.ID, defaultValue = Constants.DEFAULT_ID) long id) {
+        if (userService.checkIfExists(id)) {
+            return new ModelAndView(Constants.CREATE_QUEST);
+        }
+        return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
     }
 
     @PostMapping("/create-quest")

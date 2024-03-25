@@ -17,9 +17,10 @@ public class Quest {
     private Map<String, Question> questions;
     private String author;
 
-    public Quest(String name, String description,String author, Map<String, Question> questions) {
+    public Quest(String name, String description, String author, Map<String, Question> questions) {
         this.name = name;
         this.description = description;
         this.questions = questions;
+        this.author = author;
     }
 }

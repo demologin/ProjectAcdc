@@ -15,8 +15,8 @@ public class DeleteQuest {
     QuestService questService;
 
     @PostMapping("/delete-quest")
-    public ModelAndView deleteQuest(@RequestParam(value = Constants.ID, defaultValue = Constants.DEFAULT_ID) long id){
-        if(questService.checkIfExists(id)){
+    public ModelAndView deleteQuest(@RequestParam(value = Constants.ID, defaultValue = Constants.DEFAULT_ID) long id) {
+        if (questService.checkIfExists(id)) {
             questService.delete(id);
         }
         return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);

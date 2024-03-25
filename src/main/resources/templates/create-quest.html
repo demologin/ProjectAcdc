@@ -38,7 +38,7 @@
         <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Введите JSON текст квеста</h5>
+                    <h5 class="card-title" id="json-title">Введите JSON квеста ⓘ</h5>
                     <form id="quest-form" action="/create-quest" method="post">
                         <textarea id="json" class="form-control" name="json" rows="8"></textarea>
                         <button type="submit" id="submit-btn" class="btn btn-primary mt-3">Подтвердить</button>
@@ -53,7 +53,10 @@
     </div>
 </div>
 <script>
-    // Функция для копирования текста при клике
+    document.getElementById('json-title').addEventListener('click', function() {
+        alert("1) Правильная структура\n2) Название на английском\n3) Для каждого ответа должно быть продолжение");
+    });
+
     document.getElementById('copy-text').addEventListener('click', function() {
         var textToCopy = "{\n" +
             "  \"name\": \"Java\",\n" +
