@@ -65,8 +65,8 @@ public class QuestService {
         return userOptional.isPresent();
     }
 
-    private void addDefaultQuests(){
-        for(String path : Constants.DEFAULT_QUESTS) {
+    private void addDefaultQuests() {
+        for (String path : Constants.DEFAULT_QUESTS) {
             Quest quest = QuestParser.parseFromJsonFile(MainPageController.class.getResource(path));
             createIfNotExists(quest);
         }

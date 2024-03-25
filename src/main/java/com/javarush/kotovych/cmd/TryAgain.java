@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class TryAgain {
 
 
-
     @GetMapping("/try-again")
     public ModelAndView tryAgain(@RequestParam(Constants.NAME) String questName,
                                  HttpServletRequest request) {

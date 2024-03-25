@@ -22,6 +22,12 @@
         .error-message {
             color: red;
         }
+
+        .logout-button {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #212529;
+        }
     </style>
 </head>
 
@@ -34,40 +40,42 @@
     </div>
 </nav>
 
-<form class="form-horizontal" th:action="@{/edit-user}" method="post" onsubmit="return validateForm()">
-    <fieldset>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Edit Profile</h2>
+            <form class="form-horizontal" th:action="@{/edit-user}" method="post" onsubmit="return validateForm()">
+                <fieldset>
 
-        <legend>Edit Profile</legend>
+                    <div class="form-group">
+                        <label class="control-label" for="username">Username</label>
+                        <input id="username" name="username" type="text" placeholder="username"
+                               class="form-control" required=""
+                               th:value="${user.getLogin()}">
+                        <p class="error-message" id="username-error"></p>
+                    </div>
 
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="username">Username</label>
-            <div class="col-md-4">
-                <input id="username" name="username" type="text" placeholder="username"
-                       class="form-control input-md" required=""
-                       th:value="${user.getLogin()}">
-                <p class="error-message" id="username-error"></p>
-            </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password</label>
+                        <input id="password" name="password" type="password" placeholder="password"
+                               class="form-control" required=""
+                               th:value="${user.getPassword()}">
+                        <p class="error-message" id="password-error"></p>
+                    </div>
+
+                    <div class="form-group">
+                        <button id="submitButton" name="submitButton" class="btn btn-primary">Submit</button>
+                        <button type="submit" form="logoutForm" class="btn btn-warning logout-button">Logout</button>
+                        <button type="submit" form="deleteAccountForm" class="btn btn-danger">Delete Account</button>
+                    </div>
+
+                </fieldset>
+            </form>
+            <form id="logoutForm" action="/logout" method="post"></form>
+            <form id="deleteAccountForm" action="/delete-account" method="post"></form>
         </div>
-
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="password">Password</label>
-            <div class="col-md-4">
-                <input id="password" name="password" type="password" placeholder="password"
-                       class="form-control input-md" required=""
-                       th:value="${user.getPassword()}">
-                <p class="error-message" id="password-error"></p>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="submitButton"></label>
-            <div class="col-md-4">
-                <button id="submitButton" name="submitButton" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-
-    </fieldset>
-</form>
+    </div>
+</div>
 
 <script>
     function validateForm() {
@@ -76,8 +84,6 @@
 
         var usernameRegex = /^[a-zA-Z0-9\s]{4,}$/;
         var passwordRegex = /^(?=.*[a-zA-Z].*[a-zA-Z])(?=.*\d.*\d)[a-zA-Z\d-!#%^&*()_+]{4,}$/;
-
-
 
         var digitCount = (username.match(/\d/g) || []).length;
         var letterCount = (username.match(/[a-zA-Z]/g) || []).length;

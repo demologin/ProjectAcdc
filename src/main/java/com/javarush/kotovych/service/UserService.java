@@ -56,4 +56,11 @@ public class UserService {
         Optional<User> userOptional = userRepository.get(username);
         return userOptional.isPresent();
     }
+
+    public void delete(long id) {
+        if (checkIfExists(id)) {
+            User user = get(id).get();
+            delete(user);
+        }
+    }
 }

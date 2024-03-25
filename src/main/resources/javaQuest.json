@@ -7,10 +7,10 @@
       "text": "Что будете делать?",
       "firstAnswer": "Спросить ChatGPT",
       "secondAnswer": "Попробовать решить",
-      "firstNextQuestion": "ask-chat-gpt-game-over",
+      "firstNextQuestion": "(game-over)ask-chat-gpt",
       "secondNextQuestion": "try-fixing"
     },
-    "ask-chat-gpt-game-over": {
+    "(game-over)ask-chat-gpt": {
       "situation": "Ваш проект сломался",
       "text": "Вы сделали так как сказал ChatGPT но забыли сделать коммит",
       "firstAnswer": "",
@@ -32,15 +32,15 @@
       "firstAnswer": "Запустить опять",
       "secondAnswer": "Удалить новую функцию",
       "firstNextQuestion": "start-code-again",
-      "secondNextQuestion": "delete-new-function-game-over"
+      "secondNextQuestion": "(game-over)delete-new-function"
     },
     "make-old-function-better": {
       "situation": "Вы доработали старую функцию",
       "text": "Ваш код стал быстрее",
       "firstAnswer": "Сделать pull request",
       "secondAnswer": "Добавить что-то новое",
-      "firstNextQuestion": "make-pr-game-over",
-      "secondNextQuestion": "add-something-new-game-over"
+      "firstNextQuestion": "(game-over)make-pr",
+      "secondNextQuestion": "(game-over)add-something-new"
     },
     "start-code-again": {
       "situation": "Код запустился",
@@ -50,7 +50,7 @@
       "firstNextQuestion": "pull-request-plus-new-functions-win",
       "secondNextQuestion": "jvm-is-mad-game-over"
     },
-    "make-pr-game-over": {
+    "(game-over)make-pr": {
       "situation": "Вы не добавили ничего нового",
       "text": "Поражение",
       "firstAnswer": "",
@@ -58,7 +58,7 @@
       "firstNextQuestion": "",
       "secondNextQuestion": ""
     },
-    "add-something-new-game-over" : {
+    "(game-over)add-something-new" : {
       "situation": "Вы устали и запутались в коде",
       "text": "Поражение",
       "firstAnswer": "",
@@ -66,15 +66,15 @@
       "firstNextQuestion": "",
       "secondNextQuestion": ""
     },
-    "pull-request-plus-new-functions-win": {
-      "situation": "Вы добавили что-то новое и сделали pull request",
-      "text": "Победа",
+    "(win)pull-request-plus-new-functions": {
+      "situation": "Победа",
+      "text": "Вы добавили что-то новое и сделали pull request",
       "firstAnswer": "",
       "secondAnswer": "",
       "firstNextQuestion": "",
       "secondNextQuestion": ""
     },
-    "jvm-is-mad-game-over": {
+    "(game-over)jvm-is-mad": {
       "situation": "JVM не понравилась такая наглость",
       "text": "Поражение",
       "firstAnswer": "",
@@ -82,7 +82,7 @@
       "firstNextQuestion": "",
       "secondNextQuestion": ""
     },
-    "delete-new-function-game-over": {
+    "(game-over)delete-new-function": {
       "situation": "Вы не добавили ничего нового",
       "text": "Поражение",
       "firstAnswer": "",

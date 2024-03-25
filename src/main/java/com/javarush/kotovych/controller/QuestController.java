@@ -24,9 +24,14 @@ public class QuestController {
 
     @GetMapping("/quest")
     public ModelAndView showQuest(@RequestParam(Constants.NAME) String questName,
-                                  @SessionAttribute(name = Constants.CURRENT_PART) String currentPart,
+                                  @SessionAttribute(name = Constants.CURRENT_PART, required = false) String currentPart,
                                   @CookieValue(value = Constants.ID, defaultValue = Constants.DEFAULT_ID) long id,
                                   HttpServletRequest request) {
+
+        if (currentPart == null) {
+            return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
+        }
+
         if (userService.checkIfExists(id)) {
             User user = userService.get(id).get();
             setStatistics(user, currentPart);

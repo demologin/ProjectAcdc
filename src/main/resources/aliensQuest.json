@@ -56,33 +56,33 @@
       "firstAnswer": "Обмениваться знаниями",
       "secondAnswer": "Попросить помощи в технологиях",
       "firstNextQuestion": "exchange-knowledge-win",
-      "secondNextQuestion": "ask-for-technology-help-win"
+      "secondNextQuestion": "(win)ask-for-technology-help"
     },
     "analyze-samples": {
       "situation": "Анализ образцов показал необычные свойства",
       "text": "Что делать с данными?",
       "firstAnswer": "Сохранить для исследований",
       "secondAnswer": "Поделиться с научным сообществом",
-      "firstNextQuestion": "save-data-win",
-      "secondNextQuestion": "share-data-win"
+      "firstNextQuestion": "(win)save-data",
+      "secondNextQuestion": "(win)share-data"
     },
     "continue-exploring": {
       "situation": "Продолжили исследования",
       "text": "Следующий шаг?",
       "firstAnswer": "Изучить артефакты",
       "secondAnswer": "Найти исследовательские объекты",
-      "firstNextQuestion": "study-artifacts-win",
-      "secondNextQuestion": "discover-research-facilities-win"
+      "firstNextQuestion": "(win)study-artifacts",
+      "secondNextQuestion": "(win)discover-research-facilities"
     },
     "return-to-base": {
       "situation": "Вернулись на базу",
       "text": "Что дальше?",
       "firstAnswer": "Составить отчёт",
       "secondAnswer": "Отправить новую экспедицию",
-      "firstNextQuestion": "write-report-win",
-      "secondNextQuestion": "send-expedition-win"
+      "firstNextQuestion": "(win)write-report",
+      "secondNextQuestion": "(win)send-expedition"
     },
-    "exchange-knowledge-win": {
+    "(win)exchange-knowledge": {
       "situation": "Успешный обмен знаниями",
       "text": "Поздравляю, вы достигли успеха в вашем путешествии!",
       "firstAnswer": "",
@@ -90,7 +90,7 @@
       "firstNextQuestion": "",
       "secondNextQuestion": ""
     },
-    "ask-for-technology-help-win": {
+    "(win)ask-for-technology-help": {
       "situation": "Инопланетяне помогли вам",
       "text": "Вы смогли получить новые знания и технологии для дальнейших исследований. Поздравляю, ваша миссия успешна!",
       "firstAnswer": "",
@@ -106,7 +106,7 @@
       "firstNextQuestion": "",
       "secondNextQuestion": ""
     },
-    "share-data-win": {
+    "(win)share-data": {
       "situation": "Поделились данными",
       "text": "Ваши исследования помогут другим ученым в изучении инопланетной жизни. Поздравляю с успешным завершением экспедиции!",
       "firstAnswer": "",
@@ -114,7 +114,7 @@
       "firstNextQuestion": "",
       "secondNextQuestion": ""
     },
-    "study-artifacts-win": {
+    "(win)study-artifacts": {
       "situation": "Изучили артефакты",
       "text": "Ваши открытия могут раскрыть тайны инопланетной цивилизации. Поздравляю с успешным завершением экспедиции!",
       "firstAnswer": "",
@@ -122,7 +122,7 @@
       "firstNextQuestion": "",
       "secondNextQuestion": ""
     },
-    "discover-research-facilities-win": {
+    "(win)discover-research-facilities": {
       "situation": "Обнаружили исследовательские объекты",
       "text": "Эти объекты могут содержать важные знания для дальнейших исследований. Поздравляю с успешным завершением экспедиции!",
       "firstAnswer": "",
