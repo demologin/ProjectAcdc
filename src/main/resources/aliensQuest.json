@@ -1,6 +1,7 @@
 {
   "name": "Alien Encounter",
   "description": "ChatGPT generated",
+  "author": "default",
   "questions": {
     "start": {
       "situation": "Вы на планете, населенной инопланетянами",

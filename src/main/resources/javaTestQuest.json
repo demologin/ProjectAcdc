@@ -1,6 +1,7 @@
 {
   "name": "Java Test",
   "description": "Разные вопросы про Java",
+  "author": "default",
   "questions": {
     "start": {
       "situation": "Вы на собеседовании на позицию Java разработчика.",

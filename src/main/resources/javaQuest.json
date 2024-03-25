@@ -1,6 +1,7 @@
 {
   "name": "Java",
   "description": "Удивительный мир магии",
+  "author": "default",
   "questions": {
     "start": {
       "situation": "Что будете делать?",

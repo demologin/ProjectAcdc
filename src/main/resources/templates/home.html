@@ -31,14 +31,38 @@
             align-items: center;
         }
 
+        .quest-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
         .quest-block {
             border: 1px solid #ccc;
-            margin-bottom: 20px;
             padding: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             background-color: #fff;
             cursor: pointer;
+            width: 100%;
+            overflow: auto;
+            height: 180px; /* Добавлено для равномерного размера */
+        }
+
+        .quest-block p {
+            word-wrap: break-word;
+        }
+
+        .author {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
         }
 
         .quest-block:hover {
@@ -78,9 +102,12 @@
 <div th:if="${loggedIn}" class="container">
     <div class="row">
         <div th:each="quest : ${quests}" class="col-lg-4 col-md-6">
-            <div class="quest-block" th:attr="data-name=${quest.getName()}" onclick="redirectToDetails(this)">
-                <h3 th:text="${quest.getName()}"></h3>
-                <p th:text="${quest.getDescription()}"></p>
+            <div class="quest-wrapper">
+                <div class="quest-block" th:attr="data-name=${quest.getName()}" onclick="redirectToDetails(this)">
+                    <h3 th:text="${quest.getName()}"></h3>
+                    <p th:text="${quest.getDescription()}"></p>
+                </div>
+                <div class="author" th:text="'Автор: ' + ${quest.getAuthor()}"></div>
             </div>
         </div>
     </div>
