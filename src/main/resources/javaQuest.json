@@ -4,28 +4,28 @@
   "author": "default",
   "questions": {
     "start": {
-      "situation": "Что будете делать?",
-      "text": "Вы пишите проект и столкнулись с ошибкой",
+      "situation": "Вы пишите проект и столкнулись с ошибкой",
+      "text": "Что будете делать?",
       "answers": {
         "Спросить ChatGPT": "(game-over)ask-chat-gpt",
         "Попробовать решить": "try-fixing"
       }
     },
     "(game-over)ask-chat-gpt": {
-      "situation": "Вы сделали так как сказал ChatGPT но забыли сделать коммит",
-      "text": "Ваш проект сломался"
+      "situation": "Ваш проект сломался",
+      "text": "Вы сделали так как сказал ChatGPT но забыли сделать коммит"
     },
     "try-fixing": {
-      "situation": "Что будете делать дальше?",
-      "text": "У вас получилось починить ошибку",
+      "situation": "У вас получилось починить ошибку",
+      "text": "Что будете делать дальше?",
       "answers": {
         "Добавить новую функцию": "add-new-function",
         "Доработать старую": "make-old-function-better"
       }
     },
     "add-new-function": {
-      "situation": "У вас километровый stack trace",
-      "text": "Вы добавили новую функцию",
+      "situation": "Вы добавили новую функцию",
+      "text": "У вас километровый stack trace",
       "answers": {
         "Запустить опять": "start-code-again",
         "Удалить новую функцию": "(game-over)delete-new-function"
@@ -40,8 +40,8 @@
       }
     },
     "start-code-again": {
-      "situation": "JVM стало вас жалко и она запустила код без ошибок",
-      "text": "Код запустился",
+      "situation": "Код запустился",
+      "text": "JVM стало вас жалко и она запустила код без ошибок",
       "answers": {
         "Сделать pull request": "(win)pull-request-plus-new-functions",
         "Закрыть проект": "(game-over)jvm-is-mad"
