@@ -47,7 +47,7 @@
       "text": "JVM стало вас жалко и она запустила код без ошибок",
       "firstAnswer": "Сделать pull request",
       "secondAnswer": "Закрыть проект",
-      "firstNextQuestion": "pull-request-plus-new-functions-win",
+      "firstNextQuestion": "(win)pull-request-plus-new-functions",
       "secondNextQuestion": "jvm-is-mad-game-over"
     },
     "(game-over)make-pr": {

@@ -11,27 +11,32 @@
 
     <style>
         .user-table {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .user-table table {
             border-collapse: collapse;
             width: 100%;
         }
 
         .user-table th,
         .user-table td {
-            border: 1px solid #dddddd;
-            padding: 8px;
+            border: 1px solid #dee2e6;
+            padding: 12px;
             text-align: left;
         }
 
         .user-table th {
-            background-color: #f2f2f2;
+            background-color: #f8f9fa;
         }
 
         .user-table tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #f8f9fa;
         }
 
         .user-table tr:hover {
-            background-color: #dddddd;
+            background-color: #e9ecef;
         }
 
         .navbar {
@@ -59,32 +64,26 @@
     </div>
 </nav>
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4 col-md-6">
-            <div class="user-table">
-                <table border="1">
-                    <thead>
-                    <tr>
-                        <th>User ID</th>
-                        <th>Username</th>
-                        <th>Wins</th>
-                        <th>Losses</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <tr th:each="user : ${users}">
-                        <td th:text="${user.getId()}"></td>
-                        <td th:text="${user.getLogin()}"></td>
-                        <td th:text="${user.getWins()}"></td>
-                        <td th:text="${user.getLosses()}"></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+<div class="user-table">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Wins</th>
+            <th>Losses</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.getId()}"></td>
+            <td th:text="${user.getLogin()}"></td>
+            <td th:text="${user.getWins()}"></td>
+            <td th:text="${user.getLosses()}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+
 </body>
 </html>
