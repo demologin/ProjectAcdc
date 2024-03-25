@@ -82,8 +82,10 @@
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
 
-        var usernameRegex = /^[a-zA-Z0-9\s]{4,}$/;
-        var passwordRegex = /^(?=.*[a-zA-Z].*[a-zA-Z])(?=.*\d.*\d)[a-zA-Z\d-!#%^&*()_+]{4,}$/;
+        var usernameRegex = /^[a-zA-Z0-9\s]{4,12}$/;
+        var passwordRegex = /^(?=(?:\D*\d){4})(?=(?:[^\d]*\d){2})(?=(?:[^a-zA-Z]*[a-zA-Z]){2})[\w\s!#%^&*()_+-]{6,}$/;
+
+
 
         var digitCount = (username.match(/\d/g) || []).length;
         var letterCount = (username.match(/[a-zA-Z]/g) || []).length;
