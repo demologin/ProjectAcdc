@@ -10,4 +10,5 @@ public class LoggerConstants {
     public static final String ACCOUNT_UPDATED_LOG = "account {} updated";
     public static final String USER_LOGGED_IN_LOG = "user {} logged in";
     public static final String QUEST_CREATED_LOG = "quest {} created";
+    public static final String USER_NOT_FOUND_LOG = "User {} not found";
 }
