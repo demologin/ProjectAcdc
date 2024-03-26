@@ -9,37 +9,10 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
 
-    <style>
-        .navbar {
-            background-color: #e9ecef; /* цвет верхней панели навигации */
-            margin-bottom: 20px; /* отступ снизу */
-        }
+    <link rel="stylesheet" type="text/css" href="/css/legend.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/form-group.css">
 
-        .navbar a {
-            color: #6c757d !important; /* цвет ссылок в верхней панели навигации */
-            margin-right: 10px; /* расстояние между ссылками */
-        }
-
-        .centered-form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .centered-form form {
-            width: 300px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-    </style>
 </head>
 
 <body>
@@ -55,11 +28,12 @@
 </div>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <form class="form-horizontal" th:action="@{/login}" method="post">
                 <fieldset>
 
-                    <legend>Log in</legend>
+                    <h2 class="legend">Log in</h2>
+
                     <div class="alert alert-danger" id="error-message" style="display:none;"></div>
                     <div class="form-group">
                         <label for="username">Username</label>

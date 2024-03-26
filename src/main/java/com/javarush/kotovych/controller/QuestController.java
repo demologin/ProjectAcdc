@@ -23,11 +23,11 @@ public class QuestController {
     private UserService userService;
 
     @GetMapping("/quest")
-    public ModelAndView showQuest(@RequestParam(Constants.NAME) String questName,
+    public ModelAndView showQuest(@RequestParam(value = Constants.NAME) String questName,
                                   @SessionAttribute(name = Constants.CURRENT_PART, required = false) String currentPart,
                                   @CookieValue(value = Constants.ID, defaultValue = Constants.DEFAULT_ID) long id,
                                   HttpServletRequest request) {
-        if (currentPart == null) {
+        if (currentPart == null || questName == null) {
             return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
         }
 
@@ -41,9 +41,7 @@ public class QuestController {
                 ModelAndView modelAndView = new ModelAndView(chooseTemplate(currentPart));
                 Optional<Quest> questOptional = questService.get(questName);
                 Quest quest = questOptional.get();
-                modelAndView.addObject(Constants.QUEST, quest);
-                modelAndView.addObject(Constants.QUESTION, quest.getQuestions().get(currentPart));
-                modelAndView.addObject(Constants.AUTHOR, user.getLogin().equals(quest.getAuthor()));
+                addRequiredObjects(modelAndView, quest, user, currentPart);
 
                 return modelAndView;
             }
@@ -52,9 +50,13 @@ public class QuestController {
     }
 
     @PostMapping("/quest")
-    public ModelAndView changeCurrentPart(@RequestParam(Constants.CURRENT_PART) String currentPart,
-                                          @SessionAttribute(Constants.NAME) String questName,
+    public ModelAndView changeCurrentPart(@RequestParam(value = Constants.CURRENT_PART, required = false) String currentPart,
+                                          @SessionAttribute(value = Constants.NAME, required = false) String questName,
                                           HttpServletRequest request) {
+        if (questName == null || currentPart == null) {
+            return new ModelAndView(Constants.MAIN_PAGE_REDIRECT);
+        }
+
         SessionAttributeSetter.addSessionAttribute(request, Constants.CURRENT_PART, currentPart);
         return new ModelAndView(Constants.REDIRECT_QUEST_NAME + questName);
     }
@@ -77,5 +79,14 @@ public class QuestController {
             int losses = user.getLosses();
             user.setLosses(losses + 1);
         }
+    }
+
+    private void addRequiredObjects(ModelAndView modelAndView,
+                                    Quest quest,
+                                    User user,
+                                    String currentPart) {
+        modelAndView.addObject(Constants.QUEST, quest);
+        modelAndView.addObject(Constants.QUESTION, quest.getQuestions().get(currentPart));
+        modelAndView.addObject(Constants.AUTHOR, user.getLogin().equals(quest.getAuthor()));
     }
 }

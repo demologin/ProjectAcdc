@@ -9,75 +9,8 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
 
-    <style>
-        body {
-            background-color: #f8f9fa;
-            padding-top: 20px;
-        }
-
-        .navbar {
-            background-color: #e9ecef;
-            margin-bottom: 20px;
-        }
-
-        .navbar a {
-            color: #6c757d !important;
-            margin-right: 10px;
-        }
-
-        .user-profile {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-        }
-
-        .quest-wrapper {
-            position: relative;
-            margin-bottom: 20px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        .quest-block {
-            border: 1px solid #ccc;
-            padding: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            background-color: #fff;
-            cursor: pointer;
-            width: 100%;
-            overflow: auto;
-            height: 180px; /* Добавлено для равномерного размера */
-        }
-
-        .quest-block p {
-            word-wrap: break-word;
-        }
-
-        .author {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            font-size: 12px;
-            padding: 5px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 5px;
-        }
-
-        .quest-block:hover {
-            background-color: #f0f0f0;
-        }
-
-        .page-links {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .page-links a {
-            margin-right: 20px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
 </head>
 
 <body>
@@ -113,7 +46,8 @@
     </div>
 </div>
 
-<div th:if="${!loggedIn}" class="container text-center" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+<div th:if="${!loggedIn}" class="container text-center"
+     style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
     <div class="row">
         <div class="col">
             <p>Для доступа к квестам необходимо зарегистрироваться или войти.</p>

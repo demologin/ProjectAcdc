@@ -51,7 +51,7 @@
       "situation": "Поражение",
       "text": "Вы не добавили ничего нового"
     },
-    "(game-over)add-something-new" : {
+    "(game-over)add-something-new": {
       "situation": "Поражение",
       "text": "Вы устали и запутались в коде"
     },

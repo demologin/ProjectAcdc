@@ -9,17 +9,8 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
 
-    <style>
-        .navbar {
-            background-color: #e9ecef;
-            margin-bottom: 20px;
-        }
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
 
-        .navbar a {
-            color: #6c757d !important;
-            margin-right: 10px;
-        }
-    </style>
 </head>
 <body>
 <nav class="navbar">
@@ -53,14 +44,14 @@
     </div>
 </div>
 <script>
-    document.getElementById('json-title').addEventListener('click', function() {
+    document.getElementById('json-title').addEventListener('click', function () {
         alert("1) Правильная структура\n2) Название на английском\n3) Для каждого ответа должно быть продолжение");
     });
 
-    document.getElementById('copy-text').addEventListener('click', function() {
+    document.getElementById('copy-text').addEventListener('click', function () {
         var textToCopy = "{\n" +
-            "  \"name\": \"Java\",\n" +
-            "  \"description\": \"Удивительный мир магии\",\n" +
+            "  \"name\": \"Java 2\",\n" +
+            "  \"description\": \"Удивительный мир магии 2\",\n" +
             "  \"questions\": {\n" +
             "    \"start\": {\n" +
             "      \"situation\": \"Вы пишите проект и столкнулись с ошибкой\",\n" +
