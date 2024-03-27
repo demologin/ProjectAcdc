@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/legend.css">
+    <link rel="stylesheet" type="text/css" href="/css/edit-user.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/form-group.css">
+
+    <style>
+        .error-message {
+            color: red;
+        }
+
+    </style>
+</head>
+
+<body>
+<nav class="navbar">
+    <div class="container">
+        <div>
+            <a href="#" th:href="@{/}" class="navbar-brand">Главная страница</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h2 class="legend">Edit Profile</h2>
+            <form class="form-horizontal" th:action="@{/edit-user}" method="post" onsubmit="return validateForm()">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label class="control-label" for="username">Username</label>
+                        <input id="username" name="username" type="text" placeholder="username"
+                               class="form-control" required=""
+                               th:value="${user.getLogin()}">
+                        <p class="error-message" id="username-error"></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password</label>
+                        <input id="password" name="password" type="password" placeholder="password"
+                               class="form-control" required=""
+                               th:value="${user.getPassword()}">
+                        <p class="error-message" id="password-error"></p>
+                    </div>
+
+                    <div class="form-group">
+                        <button id="submitButton" name="submitButton" class="btn btn-primary">Submit</button>
+                        <button type="submit" form="logoutForm" class="btn btn-warning logout-button">Logout</button>
+                        <button type="submit" form="deleteAccountForm" class="btn btn-danger">Delete Account</button>
+                    </div>
+
+                </fieldset>
+            </form>
+            <form id="logoutForm" action="/logout" method="post"></form>
+            <form id="deleteAccountForm" action="/delete-account" method="post"></form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        var usernameRegex = /^[a-zA-Z0-9\s]{4,12}$/;
+        var passwordRegex = /^(?=(?:\D*\d){4})(?=(?:[^\d]*\d){2})(?=(?:[^a-zA-Z]*[a-zA-Z]){2})[\w\s!#%^&*()_+-]{6,}$/;
+
+
+        var digitCount = (username.match(/\d/g) || []).length;
+        var letterCount = (username.match(/[a-zA-Z]/g) || []).length;
+
+        if (!usernameRegex.test(username) || digitCount > 3 || letterCount < 4) {
+            document.getElementById("username-error").innerText = "Username must contain at least 4 letters and no more than 3 digits.";
+            return false;
+        } else {
+            document.getElementById("username-error").innerText = "";
+        }
+
+        if (!passwordRegex.test(password)) {
+            document.getElementById("password-error").innerText = "Password must contain at least 4 digits and 2 letters";
+            return false;
+        } else {
+            document.getElementById("password-error").innerText = "";
+        }
+
+        return true;
+    }
+
+</script>
+
+</body>
+</html>
